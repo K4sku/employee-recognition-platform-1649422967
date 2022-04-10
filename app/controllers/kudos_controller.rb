@@ -1,5 +1,6 @@
 class KudosController < ApplicationController
   before_action :set_kudo, only: %i[show edit update destroy]
+  before_action :authorize!, only: %i[update edit destroy]
 
   # GET /kudos
   def index
@@ -53,5 +54,9 @@ class KudosController < ApplicationController
   # Only allow a list of trusted parameters through.
   def kudo_params
     params.require(:kudo).permit(:title, :content, :giver_id, :reciever_id)
+  end
+
+  def authorize!
+    raise AuthorizationError unless @kudo.giver == current_employee
   end
 end
