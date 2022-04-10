@@ -7,9 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Employee.create!([
-  {email: "adam@adam.com", password: "adamadam", password_confirmation: "adamadam", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
-  {email: "tomasz@tomasz.com", password: "tomasztomasz", password_confirmation: "tomasztomasz", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
+  {email: "adam@test.com", password: "adamadam", password_confirmation: "adamadam", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
+  {email: "tomasz@test.com", password: "tomasztomasz", password_confirmation: "tomasztomasz", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
   {email: "test@test.com", password: "testtest", password_confirmation: "testtest", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
-  {email: "admin@admin.com", password: "adminadmin", password_confirmation: "adminadmin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
-  {email: "user@user.com", password: "useruser", password_confirmation: "useruser", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil}
+  {email: "admin@test.com", password: "adminadmin", password_confirmation: "adminadmin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
+  {email: "user@test.com", password: "useruser", password_confirmation: "useruser", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil}
+])
+
+Kudo.create!([
+  {title: "Kudo 1", content: "Kudo 1 content", giver: Employee.find_by(email: 'adam@test.com'), reciever: Employee.find_by(email: 'tomasz@test.com')},
+  {title: "Kudo 2", content: "Kudo 2 content", giver: Employee.find_by(email: 'test@test.com'), reciever: Employee.find_by(email: 'user@test.com')},
+  {title: "Kudo 3", content: "Kudo 3 content", giver: Employee.find_by(email: 'tomasz@test.com'), reciever: Employee.find_by(email: 'admin@test.com')}
 ])
