@@ -1,5 +1,4 @@
 <h1>Kudos</h1>
-
 <table>
   <thead>
     <tr>
@@ -19,8 +18,10 @@
         <td><%= kudo.giver.email %></td>
         <td><%= kudo.reciever.email %></td>
         <td><%= link_to 'Show', kudo %></td>
-        <td><%= link_to 'Edit', edit_kudo_path(kudo) %></td>
-        <td><%= link_to 'Destroy', kudo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if employee_signed_in? && (kudo.giver == current_employee) %>
+          <td><%= link_to 'Edit', edit_kudo_path(kudo) %></td>
+          <td><%= link_to 'Destroy', kudo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
