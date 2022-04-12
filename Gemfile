@@ -19,6 +19,8 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'bootsnap', '>= 1.4.4', require: false
+# Missing dependency on Mailer gem in Ruby 3.1.0
+gem 'net-smtp'
 
 group :development, :test do
   # Debugging tool
@@ -30,7 +32,7 @@ group :development, :test do
   gem 'capybara', '~> 3.36'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.1'
-  gem 'selenium-webdriver', '~> 4.1'
+  gem 'webdrivers', '~> 5.0', require: false
 end
 
 group :development do
