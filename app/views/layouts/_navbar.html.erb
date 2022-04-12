@@ -1,18 +1,20 @@
 <nav>
-<div class="nav-inline">
-  <%=  link_to image_tag('erc_logo.png'), root_path %>
-</div>
-<div class="nav-inline">
+  <div class="nav-inline">
+    <%=  link_to image_tag('erc_logo.png'), root_path %>
+  </div>
+  <div class="nav-inline">
 
-  <h4>Navigation</h4>
-  <ul>
-    <% if !employee_signed_in? %>
-      <li><%= link_to 'Sign in', new_employee_session_path %></li>
-      <li><%= link_to 'Sign up', new_employee_registration_path %></li>
-    <% else %>
-      <li><%= link_to 'Sign out', destroy_employee_session_path, method: :delete %></li>
-    <% end %>
-</div>
+    <h4>Navigation</h4>
+    <ul>
+      <% if !employee_signed_in? %>
+        <% unless current_page?('/employees/sign_in') %>
+          <li><%= link_to 'Sign in', new_employee_session_path %></li>
+          <li><%= link_to 'Sign up', new_employee_registration_path %></li>
+        <% end %>
+      <% else %>
+        <li><%= link_to 'Sign out', destroy_employee_session_path, method: :delete %></li>
+      <% end %>
+    </div>
 
   </ul>
 </nav>
