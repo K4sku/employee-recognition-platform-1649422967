@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'Kudo.destroy' do
   before do
-    driven_by(:selenium)
     current_employee = create(:employee)
     login_as(current_employee, scope: :employee)
     create(:kudo, giver: current_employee)
