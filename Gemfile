@@ -30,6 +30,7 @@ group :development, :test do
   gem 'rubocop-rspec', '2.8.0'
   # Tests
   gem 'capybara', '~> 3.36'
+  gem 'database_cleaner-active_record', '~> 2.0', '>= 2.0.1'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.1'
   gem 'webdrivers', '~> 5.0', require: false
