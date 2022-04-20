@@ -5,7 +5,6 @@ module ApplicationHelper
     flash.each_with_object([]) do |(type, message), flash_messages|
       type = 'is-success' if type == 'notice'
       type = 'is-danger' if type == 'alert'
-      text = "<script>toastr.#{type}('#{message}', '', { closeButton: true, progressBar: true })</script>"
 
       text = "<script>bulmaToast.toast({
       message: '#{message}',
