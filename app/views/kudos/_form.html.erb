@@ -1,32 +1,23 @@
-<%= form_with(model: kudo) do |form| %>
-  <% if kudo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(kudo.errors.count, "error") %> prohibited this kudo from being saved:</h2>
-
-      <ul>
-        <% kudo.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= bulma_form_with(model: kudo) do |form| %>
 
   <div class="field">
-    <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
     <%= form.text_area :content %>
   </div>
 
   <div class="field">
-    <%= form.label :reciever_id %>
+    <%= form.label :reciever_id, class: 'label' %>
+      <div class="control">
+    <div class="select">
     <%= form.collection_select :reciever_id, Employee.where.not(id: current_employee.id), :id, :email %>
+  </div>
+  </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Ceate Kudo", class: "button is-primary" %>
   </div>
 <% end %>
