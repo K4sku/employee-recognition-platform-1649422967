@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Kudo.edit', type: :system, js: true do
   before do
-    driven_by(:selenium)
+    driven_by(:rack_test)
     create(:employee)
   end
 
