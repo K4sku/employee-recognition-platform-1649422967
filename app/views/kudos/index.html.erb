@@ -1,7 +1,7 @@
 <h1>Kudos</h1>
 <table>
   <thead>
-    <tr>
+    <tr id="kudos-table-headers">
       <th>Title</th>
       <th>Content</th>
       <th>Giver</th>
@@ -12,7 +12,7 @@
 
   <tbody>
     <% @kudos.each do |kudo| %>
-      <tr>
+      <tr id="kudo_<%= kudo.id %>">
         <td><%= kudo.title %></td>
         <td><%= kudo.content %></td>
         <td><%= kudo.giver.email %></td>
