@@ -55,7 +55,6 @@ describe 'Kudo.create', type: :system, js: true do
         last_option = page.all('option').last.text
         page.select last_option, from: 'kudo_reciever_id'
         click_on 'Create Kudo'
-        puts body
         expect(body).to have_css "form[action='/kudos'][method='post']"
         expect(body).to have_select 'kudo_reciever_id', selected: last_option
         expect(body).to have_field 'kudo_title', with: 'Lorem ipsum dolor sit amet'
