@@ -1,31 +1,51 @@
 <h1>Kudos</h1>
-<table>
-  <thead>
-    <tr id="kudos-table-headers">
-      <th>Title</th>
-      <th>Content</th>
-      <th>Giver</th>
-      <th>Reciever</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="list has-hoverable-list-items has-visible-pointer-controls">
+  <% @kudos.each do |kudo| %>
+    <div class="list-item" id="kudo_<%= kudo.id %>">
+      <div class="list-item-content">
+        <div class="list-item-title"><%= kudo.title %></div>
+        <div class="list-item-description">
+          <p><%= kudo.content %></p>
+          <div>
+            <div class="has-text-black columns">
+              <div class="column is-one-fifth">
+                <span class="has-text-weight-bold">Giver: </span> <%= kudo.giver.email %>
+              </div>
+              <div class="column is-one-quater">
+                <span class="has-text-weight-bold">Reciever: </span> <%= kudo.reciever.email %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <tbody>
-    <% @kudos.each do |kudo| %>
-      <tr id="kudo_<%= kudo.id %>">
-        <td><%= kudo.title %></td>
-        <td><%= kudo.content %></td>
-        <td><%= kudo.giver.email %></td>
-        <td><%= kudo.reciever.email %></td>
-        <td><%= link_to 'Show', kudo %></td>
-        <% if employee_signed_in? && (kudo.giver == current_employee) %>
-          <td><%= link_to 'Edit', edit_kudo_path(kudo) %></td>
-          <td><%= link_to 'Destroy', kudo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="list-item-controls">
+        <div class="buttons is-right">
+          <% if employee_signed_in? && (kudo.giver == current_employee) %>
+            <button class="button is-danger is-light is-outlined">
+              <span><%= link_to 'Destroy', kudo, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+            </button>
+
+            <button class="button">
+              <span><%= link_to 'Edit', edit_kudo_path(kudo) %></span>
+            </button>
+          <% else %>
+            <button class="button is-danger is-light is-outlined is-invisible">
+              <span>Destroy</span>
+            </button>
+
+            <button class="button is-invisible">
+              <span>Edit</span>
+            </button>
+          <% end %>
+          <button class="button">
+            <span><%= link_to 'Show', kudo %></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <br>
 
