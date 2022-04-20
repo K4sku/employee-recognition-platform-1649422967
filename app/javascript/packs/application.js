@@ -11,3 +11,8 @@ ActiveStorage.start()
 
 require("packs/layout/navbar_burger.js")
 
+bulmaToast.setDefaults({
+  duration: 3000,
+  position: 'bottom-right',
+  closeOnClick: false,
+})
