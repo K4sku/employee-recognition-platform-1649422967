@@ -7,17 +7,17 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= bulma_flash %>
 
     <%= render "layouts/navbar" %>
     <section class="section">
       <div class="content">
         <%= yield %>
+
       </div>
     </section>
   </body>
