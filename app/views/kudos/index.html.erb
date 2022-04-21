@@ -1,4 +1,12 @@
-<h1>Kudos</h1>
+<div class="navbar-menu">
+  <div class="navbar-start">
+    <h1>Kudos</h1>
+  </div>
+  <div class="navbar-end">
+    <%= link_to 'New Kudo', new_kudo_path, class: 'button is-primary' %>
+  </div>
+</div>
+
 <div class="list has-hoverable-list-items has-visible-pointer-controls">
   <% @kudos.each do |kudo| %>
     <div class="list-item" id="kudo_<%= kudo.id %>">
@@ -22,13 +30,8 @@
       <div class="list-item-controls">
         <div class="buttons is-right">
           <% if employee_signed_in? && (kudo.giver == current_employee) %>
-            <button class="button is-danger is-light is-outlined">
-              <span><%= link_to 'Destroy', kudo, method: :delete, data: { confirm: 'Are you sure?' } %></span>
-            </button>
-
-            <button class="button">
-              <span><%= link_to 'Edit', edit_kudo_path(kudo) %></span>
-            </button>
+              <%= link_to 'Destroy', kudo, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger is-light is-outlined" %>
+              <%= link_to 'Edit', edit_kudo_path(kudo), class: 'button' %>
           <% else %>
             <button class="button is-danger is-light is-outlined is-invisible">
               <span>Destroy</span>
@@ -38,9 +41,7 @@
               <span>Edit</span>
             </button>
           <% end %>
-          <button class="button">
-            <span><%= link_to 'Show', kudo %></span>
-          </button>
+            <%= link_to 'Show', kudo, class: 'button' %>
         </div>
       </div>
     </div>
@@ -49,4 +50,3 @@
 
 <br>
 
-<%= link_to 'New Kudo', new_kudo_path %>

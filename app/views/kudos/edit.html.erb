@@ -2,5 +2,7 @@
 
 <%= render 'form', kudo: @kudo %>
 
-<%= link_to 'Show', @kudo %> |
-<%= link_to 'Back', kudos_path %>
+<div class='mt-3'>
+<%= link_to 'Show', @kudo, class: 'button' %> 
+<%= link_to 'Back', kudos_path, class: 'button' %>
+</div>
