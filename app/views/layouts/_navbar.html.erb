@@ -12,22 +12,33 @@
   <div id="topNavbar" class="navbar-menu">
     <div class="navbar-start">
       <%= link_to 'Kudos', kudos_path, class: 'navbar-item' %>
+      <% if admin_user_signed_in? %>
+        <%= link_to 'Admin Dashboard', admin_pages_dashboard_path, class: 'navbar-item' %>
+      <% end %>
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <% if !employee_signed_in? %>
-            <%= link_to 'Sign in', new_employee_session_path, class: 'button is-primary' %>
-            <%= link_to 'Sign up', new_employee_registration_path, class: 'button is-light' %>
-          <% else %>
-            <% if ENV['RAILS_ENV'] == 'test' %>
-              logged user: <%= current_employee.email%>
+          <% if ['admin_users/sessions', 'admin/pages'].exclude? params[:controller] %>
+            <% if employee_signed_in? %>
+              <% if ENV['RAILS_ENV'] == 'test' %>
+                logged user: <%= current_employee.email%>
+              <% end %>
+              <%= link_to 'Sign out', destroy_employee_session_path, method: :delete, class: 'button is-light' %>
+            <% else %>
+              <%= link_to 'Sign in', new_employee_session_path, class: 'button is-primary' %>
+              <%= link_to 'Sign up', new_employee_registration_path, class: 'button is-light' %>
             <% end %>
-            <%= link_to 'Sign out', destroy_employee_session_path, method: :delete, class: 'button is-light' %>
+          <% end %>
+
+          <% if admin_user_signed_in? %>
+            <% if ENV['RAILS_ENV'] == 'test' %>
+              logged admin: <%= current_admin_user.email%>
+            <% end %>
+            <%= link_to 'Sign out', destroy_admin_user_session_path, method: :delete, class: 'button is-light' %>
           <% end %>
         </div>
-
       </div>
     </div>
   </div>
