@@ -32,7 +32,7 @@ describe 'Kudo.edit', type: :system, js: true do
         fill_in 'kudo_content', with: 'consectetur adipiscing elit. Sed dignissim dignissim urna vel ultrices.'
         last_option = page.all('option').last.text
         page.select last_option, from: 'kudo_reciever_id'
-        click_on 'Update Kudo'
+        click_on 'Save Kudo'
         expect(page).to have_current_path kudo_path(owned_kudo)
         expect(page).to have_content 'Lorem ipsum dolor sit amet'
         expect(page).to have_content 'consectetur adipiscing elit. Sed dignissim dignissim urna vel ultrices.'
@@ -47,7 +47,7 @@ describe 'Kudo.edit', type: :system, js: true do
         visit edit_kudo_path(owned_kudo)
         fill_in 'kudo_title', with: ''
         fill_in 'kudo_content', with: 'consectetur adipiscing elit.'
-        click_on 'Update Kudo'
+        click_on 'Save Kudo'
         expect(page).to have_css "form[action='/kudos/#{owned_kudo.id}'][method='post']"
         expect(page).to have_field 'kudo_content', with: 'consectetur adipiscing elit.'
         expect(page).to have_select 'kudo_reciever_id', selected: owned_kudo.reciever.email
@@ -63,7 +63,7 @@ describe 'Kudo.edit', type: :system, js: true do
         visit edit_kudo_path(owned_kudo)
         fill_in 'kudo_title', with: 'Lorem ipsum dolor sit amet'
         fill_in 'kudo_content', with: ''
-        click_on 'Update Kudo'
+        click_on 'Save Kudo'
         expect(page).to have_css "form[action='/kudos/#{owned_kudo.id}'][method='post']"
         expect(page).to have_field 'kudo_title', with: 'Lorem ipsum dolor sit amet'
         expect(page).to have_select 'kudo_reciever_id', selected: owned_kudo.reciever.email

@@ -5,6 +5,9 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
+    "animate.css": "^4.1.1",
+    "bulma-list": "^1.1.4",
+    "bulma-toast": "^2.4.1",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },

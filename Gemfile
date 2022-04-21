@@ -5,6 +5,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.0'
 
+# form helpers for bulma
+gem 'bulma_form_builder'
+# Use Bulma CSS
+gem 'bulma-rails', '~> 0.9.3'
 # Use Devise as authentication solution for Rails
 gem 'devise', '~> 4.8', '>= 4.8.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'

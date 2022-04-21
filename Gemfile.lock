@@ -68,6 +68,10 @@ GEM
     bootsnap (1.11.1)
       msgpack (~> 1.2)
     builder (3.2.4)
+    bulma-rails (0.9.3)
+      sassc (~> 2.0)
+    bulma_form_builder (0.4.2)
+      rails (>= 6.0.4.1)
     capybara (3.36.0)
       addressable
       matrix
@@ -277,6 +281,8 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
+  bulma-rails (~> 0.9.3)
+  bulma_form_builder
   capybara (~> 3.36)
   database_cleaner-active_record (~> 2.0, >= 2.0.1)
   devise (~> 4.8, >= 4.8.1)

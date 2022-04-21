@@ -28,7 +28,7 @@ describe 'Kudo.create', type: :system, js: true do
         fill_in 'kudo_content', with: 'consectetur adipiscing elit. Sed dignissim dignissim urna vel ultrices.'
         last_option = page.all('option').last.text
         page.select last_option, from: 'kudo_reciever_id'
-        click_on 'Create Kudo'
+        click_on 'Save Kudo'
         expect(page).to have_current_path kudos_path
         expect(page).to have_content 'Lorem ipsum dolor sit amet'
       end
@@ -40,7 +40,7 @@ describe 'Kudo.create', type: :system, js: true do
         fill_in 'kudo_content', with: 'consectetur adipiscing elit.'
         last_option = page.all('option').last.text
         page.select last_option, from: 'kudo_reciever_id'
-        click_on 'Create Kudo'
+        click_on 'Save Kudo'
         expect(page).to have_css "form[action='/kudos'][method='post']"
         expect(page).to have_field 'kudo_content', with: 'consectetur adipiscing elit.'
         expect(page).to have_select 'kudo_reciever_id', selected: last_option
@@ -54,7 +54,7 @@ describe 'Kudo.create', type: :system, js: true do
         fill_in 'kudo_title', with: 'Lorem ipsum dolor sit amet'
         last_option = page.all('option').last.text
         page.select last_option, from: 'kudo_reciever_id'
-        click_on 'Create Kudo'
+        click_on 'Save Kudo'
         expect(body).to have_css "form[action='/kudos'][method='post']"
         expect(body).to have_select 'kudo_reciever_id', selected: last_option
         expect(body).to have_field 'kudo_title', with: 'Lorem ipsum dolor sit amet'
