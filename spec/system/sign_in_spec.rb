@@ -26,7 +26,8 @@ describe 'Employee.sign_in', type: :system do
         fill_in 'employee_email', with: employee.email
         fill_in 'employee_password',	with: employee.password
         click_button value: 'Log in'
-        expect(page).to have_text 'Signed in successfully.'
+        expect(page).to have_current_path root_path
+        expect(page).to have_content employee.email
       end
     end
 
@@ -36,7 +37,7 @@ describe 'Employee.sign_in', type: :system do
         fill_in 'employee_email', with: 'invalid@email.address'
         fill_in 'employee_password',	with: '111'
         click_button value: 'Log in'
-        expect(page).to have_text 'Invalid Email or password.'
+        expect(page).to have_current_path new_employee_session_path
       end
     end
   end

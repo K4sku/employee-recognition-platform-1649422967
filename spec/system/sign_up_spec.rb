@@ -31,7 +31,8 @@ describe 'Employee.registration', type: :system do
         fill_in 'employee_password',	with: employee.password
         fill_in 'employee_password_confirmation',	with: employee.password
         click_button value: 'Sign up'
-        expect(page).to have_text 'Welcome! You have signed up successfully.'
+        expect(page).to have_current_path root_path
+        expect(page).to have_content employee.email
       end
     end
 
