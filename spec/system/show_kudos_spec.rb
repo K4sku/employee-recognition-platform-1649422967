@@ -14,7 +14,7 @@ describe 'Kudo.index', type: :system, js: true do
       login_as(current_employee, scope: :employee)
       create(:kudo, giver: current_employee)
       visit root_path
-      expect(page).to have_selector(:css, "tr[id^='kudo_']", count: 2)
+      expect(page).to have_selector(:css, "div[id^='kudo_']", count: 2)
     end
 
     context "when is kudo's giver" do
@@ -25,7 +25,7 @@ describe 'Kudo.index', type: :system, js: true do
         owned_kudo = create(:kudo, giver: current_employee)
         visit root_path
 
-        within "tr[id='kudo_#{owned_kudo.id}']" do
+        within "div[id='kudo_#{owned_kudo.id}']" do
           expect(page).to have_content('Edit')
         end
       end
@@ -37,7 +37,7 @@ describe 'Kudo.index', type: :system, js: true do
         owned_kudo = create(:kudo, giver: current_employee)
         visit root_path
 
-        within "tr[id='kudo_#{owned_kudo.id}']" do
+        within "div[id='kudo_#{owned_kudo.id}']" do
           expect(page).to have_content('Destroy')
         end
       end

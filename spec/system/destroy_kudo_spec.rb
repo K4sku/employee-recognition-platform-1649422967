@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'Kudo.destroy' do
   before do
     driven_by(:rack_test)
+    # driven_by(:selenium)
     current_employee = create(:employee)
     login_as(current_employee, scope: :employee)
     create(:kudo, giver: current_employee)
@@ -15,9 +16,9 @@ describe 'Kudo.destroy' do
         # accept_alert do
         click_link 'Destroy'
         # end
-        expect(page).to have_content 'Kudo was successfully destroyed.'
+        # expect(page).to have_content 'Kudo was successfully destroyed.'
         expect(page).to have_current_path kudos_path
-        expect(page).to have_no_selector(:css, "tr[id^='kudo_']")
+        expect(page).to have_no_selector(:css, "div[id^='kudo_']")
       end
     end
 
@@ -28,7 +29,7 @@ describe 'Kudo.destroy' do
     #       click_link 'Destroy'
     #     end
     #     expect(page).to have_current_path root_path
-    #     expect(page).to have_selector(:css, "tr[id^='kudo_']")
+    #     expect(page).to have_selector(:css, "div[id^='kudo_']")
     #   end
     # end
   end
