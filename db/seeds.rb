@@ -19,3 +19,8 @@ Kudo.create!([
   {title: "Kudo 2", content: "Kudo 2 content", giver: Employee.find_by(email: 'test@test.com'), reciever: Employee.find_by(email: 'user@test.com')},
   {title: "Kudo 3", content: "Kudo 3 content", giver: Employee.find_by(email: 'tomasz@test.com'), reciever: Employee.find_by(email: 'admin@test.com')}
 ])
+
+AdminUser.create!([
+  email: "admin@test.com", password: "adminadmin", password_confirmation: "adminadmin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil,
+  email: "admin2@test.com", password: "admin", password_confirmation: "admin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil
+  ])
