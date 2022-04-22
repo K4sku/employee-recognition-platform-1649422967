@@ -1,11 +1,8 @@
 # Employee Recognition Platfrom
 
-### Setup
-```
-bin/setup
-```
+### App hosted on heorku
+https://hidden-earth-52528.herokuapp.com
 
-### How to start the app
-```
-rails server
-```
+Demo credentials:
+Email: test@test.com
+Password: testtest
