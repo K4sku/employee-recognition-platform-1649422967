@@ -10,7 +10,7 @@ Employee.create!([
   {email: "adam@test.com", password: "adamadam", password_confirmation: "adamadam", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
   {email: "tomasz@test.com", password: "tomasztomasz", password_confirmation: "tomasztomasz", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
   {email: "test@test.com", password: "testtest", password_confirmation: "testtest", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
-  {email: "admin@test.com", password: "adminadmin", password_confirmation: "adminadmin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
+  {email: "asd@test.com", password: "asdasd", password_confirmation: "asdasd", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
   {email: "user@test.com", password: "useruser", password_confirmation: "useruser", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil}
 ])
 
