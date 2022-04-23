@@ -12,15 +12,15 @@
   <div id="topNavbar" class="navbar-menu">
     <div class="navbar-start">
       <%= link_to 'Kudos', kudos_path, class: 'navbar-item' %>
-      <% if admin_user_signed_in? %>
-        <%= link_to 'Admin Dashboard', admin_pages_dashboard_path, class: 'navbar-item' %>
+      <% if admin_signed_in? %>
+        <%= link_to 'Admin Dashboard', admins_pages_dashboard_path, class: 'navbar-item' %>
       <% end %>
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <% if ['admin_users/sessions', 'admin/pages'].exclude? params[:controller] %>
+          <% if ['admins/sessions', 'admins/pages'].exclude? params[:controller] %>
             <% if employee_signed_in? %>
               <% if ENV['RAILS_ENV'] == 'test' %>
                 logged user: <%= current_employee.email%>
@@ -32,11 +32,11 @@
             <% end %>
           <% end %>
 
-          <% if admin_user_signed_in? %>
+          <% if admin_signed_in? %>
             <% if ENV['RAILS_ENV'] == 'test' %>
-              logged admin: <%= current_admin_user.email%>
+              logged admin: <%= current_admin.email%>
             <% end %>
-            <%= link_to 'Sign out Admin', destroy_admin_user_session_path, method: :delete, class: 'button is-light' %>
+            <%= link_to 'Sign out Admin', destroy_admin_session_path, method: :delete, class: 'button is-light' %>
           <% end %>
         </div>
       </div>

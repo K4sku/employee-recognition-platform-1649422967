@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module AdminUsers
+module Admins
   class SessionsController < Devise::SessionsController
     protected
 
@@ -11,12 +11,12 @@ module AdminUsers
 
     # Login Path (if already logged in)
     def after_sign_in_path_for(_resource)
-      admin_pages_dashboard_path
+      admins_pages_dashboard_path
     end
 
     # Logout Path
     def after_sign_out_path_for(_resource_or_scope)
-      admin_root_path
+      admins_root_path
     end
   end
 end

@@ -5,19 +5,20 @@ describe 'Employee.sign_out', type: :system do
     driven_by(:rack_test)
   end
 
-  let(:admin_user) { create(:admin_user) }
+  let(:admin) { create(:admin) }
 
   context 'when signed in' do
     it 'shows sign out link' do
-      login_as(admin_user, scope: :admin_user)
-      visit admin_pages_dashboard_path
+      login_as(admin, scope: :admin)
+      visit admins_pages_dashboard_path
       expect(page).to have_link 'Sign out'
     end
 
     describe 'when click on sign out' do
       it do
-        login_as(admin_user, scope: :admin_user)
-        visit admin_pages_dashboard_path
+        login_as(admin, scope: :admin)
+..............................#<Capybara::Session:0x00007f00c3d221f0>
+        visit admins_pages_dashboard_path
         click_link 'Sign out'
         expect(page).to have_button 'Log in'
       end

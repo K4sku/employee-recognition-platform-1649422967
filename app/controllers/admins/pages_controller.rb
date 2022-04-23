@@ -1,6 +1,6 @@
-module Admin
+module Admins
   class PagesController < ApplicationController
-    before_action :authenticate_admin_user!
+    before_action :authenticate_admin!
     def dashboard
       # GET /kudos
       @kudos = Kudo.all.order('id DESC')
@@ -10,6 +10,6 @@ module Admin
   private
 
   def authorize!
-    raise AuthorizationError unless admin_user_signed_in?
+    raise AuthorizationError unless admin_signed_in?
   end
 end

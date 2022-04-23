@@ -26,7 +26,7 @@
 
       <div class="list-item-controls">
         <div class="buttons is-right">
-          <% if admin_user_signed_in?%>
+          <% if admin_signed_in?%>
             <%= link_to 'Destroy', kudo, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger is-light is-outlined" %>
           <% end %>
         </div>

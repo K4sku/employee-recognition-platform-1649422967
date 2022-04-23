@@ -1,7 +1,7 @@
 class KudosController < ApplicationController
   before_action :set_kudo, only: %i[show edit update destroy]
   before_action :authorize!, only: %i[update edit destroy]
-  before_action :authenticate_employee!, only: :destroy, unless: :current_admin_user
+  before_action :authenticate_employee!, only: :destroy, unless: :current_admin
   before_action :authenticate_employee!, except: :destroy
 
   # GET /kudos
@@ -60,6 +60,6 @@ class KudosController < ApplicationController
   end
 
   def authorize!
-    raise AuthorizationError unless @kudo.giver == current_employee || admin_user_signed_in?
+    raise AuthorizationError unless @kudo.giver == current_employee || admin_signed_in?
   end
 end
