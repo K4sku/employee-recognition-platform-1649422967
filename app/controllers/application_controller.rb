@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :authenticate_employee!
-
   rescue_from 'AuthorizationError', with: :deny_access
 
   private

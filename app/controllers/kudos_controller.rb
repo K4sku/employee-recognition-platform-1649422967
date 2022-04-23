@@ -1,10 +1,12 @@
 class KudosController < ApplicationController
   before_action :set_kudo, only: %i[show edit update destroy]
   before_action :authorize!, only: %i[update edit destroy]
+  before_action :authenticate_employee!, only: :destroy, unless: :current_admin
+  before_action :authenticate_employee!, except: :destroy
 
   # GET /kudos
   def index
-    @kudos = Kudo.all
+    @kudos = Kudo.all.order('id DESC')
   end
 
   # GET /kudos/1
@@ -41,7 +43,8 @@ class KudosController < ApplicationController
   # DELETE /kudos/1
   def destroy
     @kudo.destroy
-    redirect_to kudos_url, notice: 'Kudo was successfully destroyed.'
+    flash[:notice] = 'Kudo was successfully destroyed.'
+    redirect_back fallback_location: kudos_path
   end
 
   private
@@ -57,6 +60,6 @@ class KudosController < ApplicationController
   end
 
   def authorize!
-    raise AuthorizationError unless @kudo.giver == current_employee
+    raise AuthorizationError unless @kudo.giver == current_employee || admin_signed_in?
   end
 end
