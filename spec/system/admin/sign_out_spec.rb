@@ -15,7 +15,7 @@ describe 'Employee.sign_out', type: :system do
     end
 
     describe 'when click on sign out' do
-      it do
+      it 'signs out admin' do
         login_as(admin, scope: :admin)
         visit admins_pages_dashboard_path
         click_link 'Sign out'

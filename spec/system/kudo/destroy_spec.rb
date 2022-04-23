@@ -17,7 +17,6 @@ describe 'Kudo.destroy' do
         click_link 'Destroy'
         # end
         # expect(page).to have_content 'Kudo was successfully destroyed.'
-        puts page
         expect(page).to have_current_path root_path
         expect(page).to have_no_selector(:css, "div[id^='kudo_']")
       end
