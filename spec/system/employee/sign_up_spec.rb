@@ -33,6 +33,7 @@ describe 'Employee.registration', type: :system do
         click_button value: 'Sign up'
         expect(page).to have_current_path root_path
         expect(page).to have_content employee.email
+        expect(page).to have_content 'Available kudos: 10'
       end
     end
 
