@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   
   namespace :admins do
     get 'pages/dashboard', to: 'pages#dashboard'
+    delete 'pages/dashboard/kudo(/:id)', to: 'pages#destroy_kudo', as: :pages_destroy_kudo
     root to: 'pages#dashboard'
   end
 

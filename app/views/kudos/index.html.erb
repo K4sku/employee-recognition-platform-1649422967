@@ -3,7 +3,7 @@
     <h1>Kudos</h1>
   </div>
   <div class="navbar-end">
-    <%= link_to 'New Kudo', new_kudo_path, class: 'button is-primary' %>
+    <%= link_to 'New Kudo', new_kudo_path, class: static_button_if_zero(current_employee.number_of_available_kudos) %>
   </div>
 </div>
 

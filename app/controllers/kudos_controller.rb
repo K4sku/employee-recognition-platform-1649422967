@@ -24,7 +24,13 @@ class KudosController < ApplicationController
   def create
     @kudo = Kudo.new(kudo_params)
     @kudo.giver = current_employee
+    if current_employee.number_of_available_kudos <= 0
+      flash.now[:alert] = 'No available kudos left.'
+      redirect_to kudos_path
+      return
+    end
     if @kudo.save
+      current_employee.decrement(:number_of_available_kudos).save
       redirect_to kudos_path, notice: 'Kudo was successfully created.'
     else
       render :new
@@ -43,6 +49,7 @@ class KudosController < ApplicationController
   # DELETE /kudos/1
   def destroy
     @kudo.destroy
+    @kudo.giver.increment(:number_of_available_kudos).save
     flash[:notice] = 'Kudo was successfully destroyed.'
     redirect_back fallback_location: kudos_path
   end

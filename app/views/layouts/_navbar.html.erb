@@ -19,12 +19,18 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
+        <% if employee_signed_in? %>
+          <%= style_avaible_kudos(current_employee.number_of_available_kudos) %>
+        <% end %>
+      </div>
+      <div class="navbar-item">
         <div class="buttons">
           <% if ['admins/sessions', 'admins/pages'].exclude? params[:controller] %>
             <% if employee_signed_in? %>
               <% if ENV['RAILS_ENV'] == 'test' %>
                 logged user: <%= current_employee.email%>
               <% end %>
+
               <%= link_to 'Sign out', destroy_employee_session_path, method: :delete, class: 'button is-light' %>
             <% else %>
               <%= link_to 'Sign in', new_employee_session_path, class: 'button is-primary' %>
