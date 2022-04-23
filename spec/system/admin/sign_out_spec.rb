@@ -17,7 +17,6 @@ describe 'Employee.sign_out', type: :system do
     describe 'when click on sign out' do
       it do
         login_as(admin, scope: :admin)
-..............................#<Capybara::Session:0x00007f00c3d221f0>
         visit admins_pages_dashboard_path
         click_link 'Sign out'
         expect(page).to have_button 'Log in'
