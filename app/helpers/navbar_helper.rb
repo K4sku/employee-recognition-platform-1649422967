@@ -12,4 +12,12 @@ module NavbarHelper
                                                               id: 'available_kudos_counter'
     end
   end
+
+  def display_curent_users_email_on_test_or_development(user)
+    return unless ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'development'
+
+    content_tag :span, class: 'navbar-item', id: "current_#{user.class.name.downcase}_email" do
+      "#{user.class.name}: #{user.email}"
+    end
+  end
 end
