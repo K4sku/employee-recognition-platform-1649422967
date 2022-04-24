@@ -1,3 +1,4 @@
+<div class='container is-fluid'>
 <div class="navbar-menu">
   <div class="navbar-start">
     <h1>Kudos</h1>
@@ -6,7 +7,7 @@
     <%= link_to 'New Kudo', new_kudo_path, class: static_button_if_zero(current_employee.number_of_available_kudos) %>
   </div>
 </div>
-
+  <div class='box'>
 <div class="list has-hoverable-list-items has-visible-pointer-controls">
   <% @kudos.each do |kudo| %>
     <div class="list-item" id="kudo_<%= kudo.id %>">
@@ -47,6 +48,5 @@
     </div>
   <% end %>
 </div>
-
-<br>
-
+</div>
+</div>
