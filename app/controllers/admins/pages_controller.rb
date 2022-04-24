@@ -1,13 +1,13 @@
 module Admins
   class PagesController < ApplicationController
     before_action :authenticate_admin!
+    # GET admins/pages/dashboard
     def dashboard
-      # GET /kudos
       @kudos = Kudo.all.order('id DESC')
     end
 
+    # DELETE admins/pages/dashboard/kudo/(:id)
     def destroy_kudo
-      # DELETE /kudos/1
       @kudo = Kudo.find(params[:id])
       @kudo.destroy
       @kudo.giver.increment(:number_of_available_kudos).save
