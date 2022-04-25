@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe 'admins/emplyees.edit', type: :system, js: true do
+  before do
+    driven_by(:selenium_chrome_headless)
+  end
+  
   let(:employee) { create(:employee) }
   let(:admin) { create(:admin) }
 
