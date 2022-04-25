@@ -14,7 +14,7 @@ describe 'Kudo.destroy' do
       it 'remove kudo' do
         visit root_path
         # accept_alert do
-        click_link 'Destroy'
+        click_link 'Delete'
         # end
         # expect(page).to have_content 'Kudo was successfully destroyed.'
         expect(page).to have_current_path root_path

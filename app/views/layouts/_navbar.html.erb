@@ -12,40 +12,40 @@
   <div id="topNavbar" class="navbar-menu">
     <div class="navbar-start">
       <%= link_to 'Kudos', kudos_path, class: 'navbar-item' %>
-      <% if admin_signed_in? %>
-        <%= link_to 'Admin Dashboard', admins_pages_dashboard_path, class: 'navbar-item' %>
-      <% end %>
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
-        <% if employee_signed_in? %>
+      <% if employee_signed_in? %>
+        <div class="navbar-item">
           <%= style_avaible_kudos(current_employee.number_of_available_kudos) %>
-        <% end %>
-      </div>
-      <div class="navbar-item">
-        <div class="buttons">
-          <% if ['admins/sessions', 'admins/pages'].exclude? params[:controller] %>
-            <% if employee_signed_in? %>
-              <% if ENV['RAILS_ENV'] == 'test' %>
-                logged user: <%= current_employee.email%>
-              <% end %>
-
-              <%= link_to 'Sign out', destroy_employee_session_path, method: :delete, class: 'button is-light' %>
-            <% else %>
-              <%= link_to 'Sign in', new_employee_session_path, class: 'button is-primary' %>
-              <%= link_to 'Sign up', new_employee_registration_path, class: 'button is-light' %>
-            <% end %>
+        </div>
+        <%= display_curent_users_email_on_test_or_development(current_employee) %>
+        <div class="navbar-item">
+          <div class="buttons">
+            <%= link_to 'Sign out', destroy_employee_session_path, method: :delete, class: 'button is-light' %>
+          </div>
+        </div>
+      <% else %>
+        <div class="navbar-item">
+          <div class="buttons">
+            <%= link_to 'Sign in', new_employee_session_path, class: 'button is-primary' %>
+            <%= link_to 'Sign up', new_employee_registration_path, class: 'button is-light' %>
           <% end %>
-
-          <% if admin_signed_in? %>
-            <% if ENV['RAILS_ENV'] == 'test' %>
-              logged admin: <%= current_admin.email%>
-            <% end %>
-            <%= link_to 'Sign out Admin', destroy_admin_session_path, method: :delete, class: 'button is-light' %>
+        </div>
+      </div>
+      <% if admin_signed_in? %>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Admin options
+          </a>
+          <div class="navbar-dropdown is-right">
+            <%= link_to 'Dashboard', admins_pages_dashboard_path, class: 'navbar-item' %>
+            <%= link_to 'Employees', admins_employees_path, class: 'navbar-item' %>
+            <hr class="navbar-divider">
+            <%= display_curent_users_email_on_test_or_development(current_admin) %>
+            <%= link_to 'Sign out Admin', destroy_admin_session_path, method: :delete, class: 'navbar-item' %>
           <% end %>
         </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>

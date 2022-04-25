@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get 'pages/dashboard', to: 'pages#dashboard'
     delete 'pages/dashboard/kudo(/:id)', to: 'pages#destroy_kudo', as: :pages_destroy_kudo
     root to: 'pages#dashboard'
+    resources :employees, path: 'pages/employees', only: %i[index edit update destroy]
   end
+
 
 end
