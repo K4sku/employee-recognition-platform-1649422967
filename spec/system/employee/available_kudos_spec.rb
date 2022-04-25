@@ -53,7 +53,7 @@ describe 'Employee.available_kudos', type: :system, js: true do
       visit kudos_path
       expect(page).to have_selector(:css, "div[id^='kudo_']", count: 1)
       expect(page).to have_content 'Available kudos: 0'
-      click_on 'Destroy'
+      click_on 'Delete'
       expect(page).to have_current_path kudos_path
       expect(page).to have_content 'Available kudos: 1'
       expect(page).to have_no_selector(:css, "div[id^='kudo_']")

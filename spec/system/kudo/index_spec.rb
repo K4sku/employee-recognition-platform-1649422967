@@ -30,7 +30,7 @@ describe 'Kudo.index', type: :system, js: true do
         end
       end
 
-      it 'show destroy link' do
+      it 'show delete link' do
         create(:kudo)
         current_employee = create(:employee)
         login_as(current_employee, scope: :employee)
@@ -38,7 +38,7 @@ describe 'Kudo.index', type: :system, js: true do
         visit root_path
 
         within "div[id='kudo_#{owned_kudo.id}']" do
-          expect(page).to have_content('Destroy')
+          expect(page).to have_content('Delete')
         end
       end
     end

@@ -17,13 +17,11 @@ describe 'admin/pages#dashboard', type: :system, js: true do
       expect(page).to have_selector(:css, "div[id^='kudo_']", count: 3)
     end
 
-    it 'show destroy links' do
+    it 'show delete links' do
       create(:kudo)
       visit admins_pages_dashboard_path
 
-      expect(page).to have_content('Destroy')
-      expect(page).to have_no_content('Show')
-      expect(page).to have_no_content('Edit')
+      expect(page).to have_content('Delete')
     end
 
     it 'do not show edit link' do
