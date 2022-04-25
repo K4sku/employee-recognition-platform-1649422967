@@ -3,7 +3,7 @@ module Admins
     before_action :authenticate_admin!
     # GET admins/pages/dashboard
     def dashboard
-      @kudos = Kudo.all.order('id DESC')
+      @kudos = Kudo.includes(:giver, :reciever).all.order('id DESC')
     end
 
     # DELETE admins/pages/dashboard/kudo/(:id)
