@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :admin do
-    email
+    email { generate(:admin_email) }
     password { 'password' }
   end
 end
