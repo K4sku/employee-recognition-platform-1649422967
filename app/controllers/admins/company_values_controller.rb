@@ -22,7 +22,7 @@ module Admins
     # POST /admins/pages/company_values
     def create
       @company_value = CompanyValue.new(company_value_params)
-      if @company_value.set_company_value
+      if @company_value.save
         redirect_to admins_company_values_path, notice: 'Company Value was successfully created.'
       else
         render :new
@@ -32,7 +32,7 @@ module Admins
     # PATCH/PUT /admins/pages/company_values/1
     def update
       if @company_value.update(company_value_params)
-        redirect_to @company_value, notice: 'Company Value was successfully updated.'
+        redirect_to admins_company_value_path(@company_value), notice: 'Company Value was successfully updated.'
       else
         render :edit
       end
