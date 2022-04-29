@@ -41,6 +41,7 @@
           <div class="navbar-dropdown is-right">
             <%= link_to 'Dashboard', admins_pages_dashboard_path, class: 'navbar-item' %>
             <%= link_to 'Employees', admins_employees_path, class: 'navbar-item' %>
+            <%= link_to 'Company Values', admins_company_values_path, class: 'navbar-item' %>
             <hr class="navbar-divider">
             <%= display_curent_users_email_on_test_or_development(current_admin) %>
             <%= link_to 'Sign out Admin', destroy_admin_session_path, method: :delete, class: 'navbar-item' %>

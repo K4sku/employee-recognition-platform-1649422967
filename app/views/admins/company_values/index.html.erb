@@ -1,0 +1,31 @@
+<div class='container is-fluid'>
+  <nav class="level is-mobile">
+    <div class="level-left">
+      <p class='is-size-3'><strong>Company values</strong></p>
+    </div>
+    <div class="level-right">
+      <%= link_to 'New Company value', new_admins_company_value_path, class: 'button is-primary level-item' %>
+    </div>
+  </nav>
+  <div class='box'>
+    <div class="list has-hoverable-list-items has-visible-pointer-controls">
+      <% @company_values.each do |company_value| %>
+        <div class="list-item" id="company_value_<%= company_value.id %>">
+          <div class="list-item-content">
+            <div class="list-item-title"><%= company_value.title %></div>
+            <div class="list-item-description">
+            </div>
+          </div>
+
+          <div class="list-item-controls">
+            <div class="buttons is-right">
+              <%= link_to 'Delete', admins_company_value_path(company_value), method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger is-light is-outlined" %>
+              <%= link_to 'Edit', edit_admins_company_value_path(company_value), class: 'button' %>
+              <%= link_to 'Show', admins_company_value_path(company_value), class: 'button' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

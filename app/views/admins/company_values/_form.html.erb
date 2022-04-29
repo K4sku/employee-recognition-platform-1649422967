@@ -1,0 +1,10 @@
+<%= bulma_form_with(model: [:admins, company_value]) do |form| %>
+
+  <div class="field">
+    <%= form.text_field :title, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save Company value", class: "button is-primary" %>
+  </div>
+<% end %>
