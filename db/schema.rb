@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2022_04_29_194103) do
     t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["title"], name: "index_company_values_on_title", unique: true
   end
 
   create_table "employees", force: :cascade do |t|
