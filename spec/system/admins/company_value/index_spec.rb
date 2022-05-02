@@ -9,12 +9,17 @@ describe 'admins/Company_values.index', type: :system do
   let(:admin) { create(:admin) }
   let(:company_value) { create(:company_value) }
 
-  context 'when admin is logged in' do
-    it 'show all company_values on index page' do
+  context 'when admin is on index page' do
+    it 'show all company_values' do
       create(:company_value)
       create(:company_value)
       visit admins_company_values_path
       expect(page).to have_selector(:css, "div[id^='company_value_']", count: 2)
+    end
+
+    it 'show New Company Value link' do
+      visit admins_company_values_path
+      expect(page).to have_link('New Company value')
     end
 
     it 'show delete link' do
