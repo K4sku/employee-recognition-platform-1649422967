@@ -95,7 +95,7 @@ RSpec.configure do |config|
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
 
-    config.before(:suite) do
+  config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
 
@@ -124,4 +124,3 @@ RSpec.configure do |config|
     use_transactional_fixtures = true
   end
 end
-
