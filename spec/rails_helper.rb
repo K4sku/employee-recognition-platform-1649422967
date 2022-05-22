@@ -37,4 +37,12 @@ RSpec.configure do |config|
   # https://github.com/heartcombo/devise/wiki/How-To:-Test-with-Capybara
   # https://gist.github.com/boddhisattva/f14d2e860dcd2d45f805eb698b99605f
   config.include Devise::Test::IntegrationHelpers, type: :system
+
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_headless
+  end
 end
