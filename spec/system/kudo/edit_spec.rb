@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'Kudo.edit', type: :system, js: true do
   before do
-    driven_by(:rack_test)
     create(:employee)
   end
 
@@ -13,7 +12,7 @@ describe 'Kudo.edit', type: :system, js: true do
     context 'when pressing New Kudo link' do
       it 'shows new kudo form' do
         logged_employee = create(:employee)
-        login_as(logged_employee, scope: :employee)
+        sign_in logged_employee
         owned_kudo = create(:kudo, giver: logged_employee)
         visit root_path
         click_link 'Edit'
@@ -25,7 +24,7 @@ describe 'Kudo.edit', type: :system, js: true do
     context 'when passing validation' do
       it 'edits kudo and shows kudo_path' do
         logged_employee = create(:employee)
-        login_as(logged_employee, scope: :employee)
+        sign_in logged_employee
         owned_kudo = create(:kudo, giver: logged_employee)
         visit edit_kudo_path(owned_kudo)
         fill_in 'kudo_title', with: 'Lorem ipsum dolor sit amet'
@@ -42,7 +41,7 @@ describe 'Kudo.edit', type: :system, js: true do
     context 'when missing title' do
       it 'shows current form with entered data and displays error' do
         logged_employee = create(:employee)
-        login_as(logged_employee, scope: :employee)
+        sign_in logged_employee
         owned_kudo = create(:kudo, giver: logged_employee)
         visit edit_kudo_path(owned_kudo)
         fill_in 'kudo_title', with: ''
@@ -58,7 +57,7 @@ describe 'Kudo.edit', type: :system, js: true do
     context 'when missing content' do
       it 'shows current form with entered data and displays error' do
         logged_employee = create(:employee)
-        login_as(logged_employee, scope: :employee)
+        sign_in logged_employee
         owned_kudo = create(:kudo, giver: logged_employee)
         visit edit_kudo_path(owned_kudo)
         fill_in 'kudo_title', with: 'Lorem ipsum dolor sit amet'

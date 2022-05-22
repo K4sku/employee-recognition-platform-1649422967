@@ -1,17 +1,13 @@
 require 'rails_helper'
 
 describe 'Kudo.index', type: :system, js: true do
-  before do
-    driven_by(:rack_test)
-  end
-
   let(:employee) { create(:employee) }
 
   context 'when employee is logged' do
     it 'show all kudos' do
       create(:kudo)
       current_employee = create(:employee)
-      login_as(current_employee, scope: :employee)
+      sign_in current_employee
       create(:kudo, giver: current_employee)
       visit root_path
       expect(page).to have_selector(:css, "div[id^='kudo_']", count: 2)
@@ -21,7 +17,7 @@ describe 'Kudo.index', type: :system, js: true do
       it 'show edit link' do
         create(:kudo)
         current_employee = create(:employee)
-        login_as(current_employee, scope: :employee)
+        sign_in current_employee
         owned_kudo = create(:kudo, giver: current_employee)
         visit root_path
 
@@ -33,7 +29,7 @@ describe 'Kudo.index', type: :system, js: true do
       it 'show delete link' do
         create(:kudo)
         current_employee = create(:employee)
-        login_as(current_employee, scope: :employee)
+        sign_in current_employee
         owned_kudo = create(:kudo, giver: current_employee)
         visit root_path
 
@@ -46,14 +42,14 @@ describe 'Kudo.index', type: :system, js: true do
     context "when is not kudo's giver" do
       it 'do not show edit link' do
         create(:kudo)
-        login_as(employee, scope: :employee)
+        sign_in employee
         visit root_path
         expect(page).to have_no_link('Edit')
       end
 
       it 'do not destroy edit link' do
         create(:kudo)
-        login_as(employee, scope: :employee)
+        sign_in employee
         visit root_path
         expect(page).to have_no_link('Destroy')
       end

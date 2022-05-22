@@ -24,3 +24,5 @@ Admin.create!([
   {email: "admin@test.com", password: "adminadmin", password_confirmation: "adminadmin"},
   {email: "admin2@test.com", password: "adminadmin", password_confirmation: "adminadmin"}
   ])
+
+["Honesty", "Ownership", "Accountability", "Passion"].each { |cv| CompanyValue.create!(title: cv) }

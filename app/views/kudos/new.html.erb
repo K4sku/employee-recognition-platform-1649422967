@@ -1,7 +1,8 @@
-<h1>New Kudo</h1>
+<div class='section'>
+  <p class='is-size-3'><strong>New Kudo</strong></p>
+  <%= render 'form', kudo: @kudo %>
 
-<%= render 'form', kudo: @kudo %>
-
-<div class='mt-3'>
-  <%= link_to 'Back', kudos_path, class: 'button is-light' %>
+  <div class='mt-3'>
+    <%= link_to 'Back', kudos_path, class: 'button is-light' %>
+  </div>
 </div>

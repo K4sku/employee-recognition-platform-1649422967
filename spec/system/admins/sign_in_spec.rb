@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 describe 'AdminUser.sign_in', type: :system do
-  before do
-    driven_by(:rack_test)
-  end
-
   let(:admin) { create(:admin) }
 
   context 'when not signed in when wisiting webpage/admin' do

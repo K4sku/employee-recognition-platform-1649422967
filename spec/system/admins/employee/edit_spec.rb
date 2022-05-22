@@ -1,16 +1,12 @@
 require 'rails_helper'
 
 describe 'admins/emplyees.edit', type: :system, js: true do
-  before do
-    driven_by(:selenium_chrome_headless)
-  end
-
   let(:employee) { create(:employee) }
   let(:admin) { create(:admin) }
 
   context 'when pressing edit link' do
     it 'shows edit employee form' do
-      login_as(admin, scope: :admin)
+      sign_in admin
       employee = create(:employee)
       visit admins_employees_path
       click_on 'Edit'
@@ -25,7 +21,7 @@ describe 'admins/emplyees.edit', type: :system, js: true do
 
   context 'when showing form' do
     it 'is prefilled with email and available kudos' do
-      login_as(admin, scope: :admin)
+      sign_in admin
       visit edit_admins_employee_path(employee)
 
       expect(page).to have_field('Email', with: employee.email)
@@ -38,7 +34,7 @@ describe 'admins/emplyees.edit', type: :system, js: true do
   context 'when editing emaployee' do
     context 'when passing validation' do
       it 'saves edited employee' do
-        login_as(admin, scope: :admin)
+        sign_in admin
         visit edit_admins_employee_path(employee)
 
         fill_in 'Email', with: 'newemail@test.com'
@@ -57,7 +53,7 @@ describe 'admins/emplyees.edit', type: :system, js: true do
 
     context 'when password fields are empty' do
       it 'does not change current password' do
-        login_as(admin, scope: :admin)
+        sign_in admin
         employee = create(:employee, password: 'oldpassword')
         visit edit_admins_employee_path(employee)
 
@@ -73,7 +69,7 @@ describe 'admins/emplyees.edit', type: :system, js: true do
 
     context 'when missing email' do
       it 'render edit with error' do
-        login_as(admin, scope: :admin)
+        sign_in admin
         visit edit_admins_employee_path(employee)
 
         fill_in 'Email', with: ''
@@ -85,7 +81,7 @@ describe 'admins/emplyees.edit', type: :system, js: true do
 
     context 'when password is too short' do
       it 'render edit with error' do
-        login_as(admin, scope: :admin)
+        sign_in admin
         visit edit_admins_employee_path(employee)
 
         fill_in 'Password', with: '123'
@@ -98,7 +94,7 @@ describe 'admins/emplyees.edit', type: :system, js: true do
 
     context 'when password confirmation does not match' do
       it 'render edit with error' do
-        login_as(admin, scope: :admin)
+        sign_in admin
         visit edit_admins_employee_path(employee)
 
         fill_in 'Password', with: '123456789'
@@ -111,7 +107,7 @@ describe 'admins/emplyees.edit', type: :system, js: true do
 
     context 'when available kudos not matching' do
       it 'stay on page with HTML5 validation error' do
-        login_as(admin, scope: :admin)
+        sign_in admin
         visit edit_admins_employee_path(employee)
 
         expect do

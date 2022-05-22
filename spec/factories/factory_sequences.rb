@@ -5,4 +5,7 @@ FactoryBot.define do
   sequence :admin_email do |n|
     "admin#{n}@test.com"
   end
+  sequence :company_value_title do |n|
+    "CValue#{n}"
+  end
 end

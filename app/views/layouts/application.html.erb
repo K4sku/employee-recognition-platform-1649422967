@@ -12,13 +12,7 @@
 
   <body>
     <%= javascript_tag bulma_flash %>
-
     <%= render "layouts/navbar" %>
-    <section class="section">
-      <div class="content">
-        <%= yield %>
-
-      </div>
-    </section>
+    <%= yield %>
   </body>
 </html>

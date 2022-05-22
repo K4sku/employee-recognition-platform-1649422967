@@ -1,25 +1,29 @@
-<div class='box'>
-<p>
-  <strong>Title:</strong>
-  <%= @kudo.title %>
-</p>
+<div class='section'>
+  <div class='box'>
+    <p>
+      <strong>Title:</strong>
+      <%= @kudo.title %>
+    </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @kudo.content %>
-</p>
+    <p>
+      <strong>Content:</strong>
+      <%= @kudo.content %>
+    </p>
 
-<p>
-  <strong>Giver:</strong>
-  <%= @kudo.giver.email %>
-</p>
+    <p>
+      <strong>Giver:</strong>
+      <%= @kudo.giver.email %>
+    </p>
 
-<p>
-  <strong>Reciever:</strong>
-  <%= @kudo.reciever.email %>
-</p>
-<% if employee_signed_in? && (@kudo.giver == current_employee) %>
-  <%= link_to 'Edit', edit_kudo_path(@kudo), class: 'button' %>
-<% end %>
-<%= link_to 'Back', kudos_path, class: 'button' %>
+    <p>
+      <strong>Reciever:</strong>
+      <%= @kudo.reciever.email %>
+    </p>
+    <div class='mt-3'>
+      <% if employee_signed_in? && (@kudo.giver == current_employee) %>
+        <%= link_to 'Edit', edit_kudo_path(@kudo), class: 'button' %>
+      <% end %>
+      <%= link_to 'Back', kudos_path, class: 'button' %>
+    </div>
+  </div>
 </div>

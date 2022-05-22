@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'admin/pages#dashboard', type: :system, js: true do
   before do
     driven_by(:rack_test)
-    login_as(admin, scope: :admin)
+    sign_in admin
   end
 
   let(:admin) { create(:admin) }

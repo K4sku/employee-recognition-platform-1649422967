@@ -10,7 +10,6 @@ module Admins
     def destroy_kudo
       @kudo = Kudo.find(params[:id])
       @kudo.destroy
-      @kudo.giver.increment(:number_of_available_kudos).save
       flash[:notice] = 'Kudo was successfully destroyed.'
       redirect_to admins_pages_dashboard_path
     end
