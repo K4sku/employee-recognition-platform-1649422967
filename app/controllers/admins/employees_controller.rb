@@ -1,6 +1,5 @@
 module Admins
-  class EmployeesController < ApplicationController
-    before_action :authenticate_admin!
+  class EmployeesController < BaseController
     before_action :set_employee, only: %i[edit update destroy]
 
     # GET admins/pages/employees
