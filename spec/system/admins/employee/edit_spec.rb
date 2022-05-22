@@ -11,7 +11,7 @@ describe 'admins/emplyees.edit', type: :system, js: true do
       visit admins_employees_path
       click_on 'Edit'
       expect(page).to have_current_path edit_admins_employee_path(employee)
-      expect(page).to have_css "form[action='/admins/pages/employees/#{employee.id}'][method='post']"
+      expect(page).to have_css "form[action='/admins/employees/#{employee.id}'][method='post']"
       expect(page).to have_field('Email')
       expect(page).to have_field('Password')
       expect(page).to have_field('Password confirmation')
@@ -74,7 +74,7 @@ describe 'admins/emplyees.edit', type: :system, js: true do
 
         fill_in 'Email', with: ''
         click_on 'Save Employee'
-        expect(page).to have_css "form[action='/admins/pages/employees/#{employee.id}'][method='post']"
+        expect(page).to have_css "form[action='/admins/employees/#{employee.id}'][method='post']"
         expect(body).to have_content "Email can't be blank"
       end
     end
@@ -87,7 +87,7 @@ describe 'admins/emplyees.edit', type: :system, js: true do
         fill_in 'Password', with: '123'
         fill_in 'Password confirmation', with: '123'
         click_on 'Save Employee'
-        expect(page).to have_css "form[action='/admins/pages/employees/#{employee.id}'][method='post']"
+        expect(page).to have_css "form[action='/admins/employees/#{employee.id}'][method='post']"
         expect(body).to have_content 'Password is too short (minimum is 6 characters)'
       end
     end
@@ -100,7 +100,7 @@ describe 'admins/emplyees.edit', type: :system, js: true do
         fill_in 'Password', with: '123456789'
         fill_in 'Password confirmation', with: 'qbcdefgh'
         click_on 'Save Employee'
-        expect(page).to have_css "form[action='/admins/pages/employees/#{employee.id}'][method='post']"
+        expect(page).to have_css "form[action='/admins/employees/#{employee.id}'][method='post']"
         expect(body).to have_content "Password confirmation doesn't match Password"
       end
     end

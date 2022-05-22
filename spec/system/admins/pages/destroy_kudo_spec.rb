@@ -10,11 +10,11 @@ describe 'admin/pages/dashboard/Kudo.destroy', js: true do
 
   context 'when clicking on Destroy link while logged in as admin_user' do
     it 'remove kudo' do
-      visit admins_pages_dashboard_path
+      visit admins_kudos_path
       accept_alert do
         click_link 'Delete'
       end
-      expect(page).to have_current_path admins_pages_dashboard_path
+      expect(page).to have_current_path admins_kudos_path
       expect(page).to have_no_selector(:css, "div[id^='kudo_']")
     end
   end

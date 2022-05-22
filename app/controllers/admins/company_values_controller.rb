@@ -1,6 +1,5 @@
 module Admins
-  class CompanyValuesController < ApplicationController
-    before_action :authenticate_admin!
+  class CompanyValuesController < BaseController
     before_action :set_company_value, only: %i[show edit update destroy]
 
     # GET /admins/pages/company_values

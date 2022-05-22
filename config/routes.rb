@@ -3,18 +3,15 @@
 Rails.application.routes.draw do
   devise_for :admins, path: 'admins', controllers: { sessions: 'admins/sessions' }, path_names: { sign_in: "" }
   devise_for :employees
-  resources :kudos
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
+  resources :kudos
   root to: 'kudos#index'
   
   namespace :admins do
     get 'pages/dashboard', to: 'pages#dashboard'
-    delete 'pages/dashboard/kudo(/:id)', to: 'pages#destroy_kudo', as: :pages_destroy_kudo
+    resources :kudos, only: %i[index destroy]
+    resources :employees, only: %i[index edit update destroy]
+    resources :company_values
     root to: 'pages#dashboard'
-    resources :employees, path: 'pages/employees', only: %i[index edit update destroy]
-    resources :company_values, path: 'pages/company_values'
   end
-
-
 end

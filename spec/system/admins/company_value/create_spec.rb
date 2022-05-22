@@ -20,7 +20,7 @@ describe 'admins/Company_values.create', type: :system, js: true do
     it 'return error with blank title' do
       visit new_admins_company_value_path
       click_on 'Save'
-      expect(page).to have_css("form[action='/admins/pages/company_values']")
+      expect(page).to have_css("form[action='/admins/company_values']")
       expect(page).to have_content("Title can't be blank")
     end
 
@@ -29,7 +29,7 @@ describe 'admins/Company_values.create', type: :system, js: true do
       visit new_admins_company_value_path
       fill_in 'Title', with: 'Title1'
       click_on 'Save'
-      expect(page).to have_css("form[action='/admins/pages/company_values']")
+      expect(page).to have_css("form[action='/admins/company_values']")
       expect(page).to have_content('Title has already been taken')
     end
 
@@ -38,7 +38,7 @@ describe 'admins/Company_values.create', type: :system, js: true do
       visit new_admins_company_value_path
       fill_in 'Title', with: 'title1'
       click_on 'Save'
-      expect(page).to have_css("form[action='/admins/pages/company_values']")
+      expect(page).to have_css("form[action='/admins/company_values']")
       expect(page).to have_content('Title has already been taken')
     end
   end
