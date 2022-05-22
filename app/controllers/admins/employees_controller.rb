@@ -1,17 +1,15 @@
 module Admins
   class EmployeesController < BaseController
-    before_action :set_employee, only: %i[edit update destroy]
-
-    # GET admins/pages/employees
     def index
       @employees = Employee.all.order('id ASC')
     end
 
-    # GET admins/pages/employees/(:id)/edit
-    def edit; end
+    def edit
+      @employee = find_employee
+    end
 
-    # PATCH/PUT admins/pages/employees/(:id)
     def update
+      @employee = find_employee
       remove_password_from_hash_if_empty
       if @employee.update(employee_params)
         redirect_to admins_employees_path, notice: 'Employee was successfully updated.'
@@ -20,8 +18,8 @@ module Admins
       end
     end
 
-    # DELETE admins/pages/employees/(:id)
     def destroy
+      @employee = find_employee
       @employee.destroy
       flash[:notice] = 'Employee was successfully destroyed.'
       redirect_back fallback_location: kudos_path
@@ -29,9 +27,8 @@ module Admins
 
     private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_employee
-      @employee = Employee.find(params[:id])
+    def find_employee
+      Employee.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
@@ -42,6 +39,7 @@ module Admins
     def remove_password_from_hash_if_empty
       return unless params[:employee][:password].strip.empty?
 
+      # remove password and password_confirmation from params if password filed was left empty or has only whitespace
       params[:employee] = params[:employee].except(:password, :password_confirmation)
     end
   end
