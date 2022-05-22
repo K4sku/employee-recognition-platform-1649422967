@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 describe 'Kudo.index', type: :system, js: true do
-  before do
-    driven_by(:rack_test)
-  end
-
   let(:employee) { create(:employee) }
 
   context 'when employee is logged' do

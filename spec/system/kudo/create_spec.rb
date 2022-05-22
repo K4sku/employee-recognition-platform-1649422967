@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'Kudo.create', type: :system, js: true do
   before do
-    driven_by(:rack_test)
     create(:employee)
     create(:employee)
     sign_in employee

@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 describe 'Employee.registration', type: :system do
-  before do
-    driven_by(:rack_test)
-  end
-
   let(:employee) { build(:employee) }
 
   context 'when not signed in' do

@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 describe 'Employee.sign_in', type: :system do
-  before do
-    driven_by(:rack_test)
-  end
-
   let(:employee) { create(:employee) }
 
   context 'when not signed in' do

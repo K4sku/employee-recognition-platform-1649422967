@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'admins/employee.delete', type: :system, js: true do
   before do
-    driven_by(:rack_test)
     sign_in admin
   end
 

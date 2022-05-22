@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'admins/Company_values.show', type: :system do
   before do
-    driven_by(:rack_test)
     sign_in admin
   end
 

@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 describe 'Employee.sign_out', type: :system do
-  before do
-    driven_by(:rack_test)
-  end
-
   let(:admin) { create(:admin) }
 
   context 'when signed in' do

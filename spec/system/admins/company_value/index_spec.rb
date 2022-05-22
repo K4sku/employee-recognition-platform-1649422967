@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'admins/Company_values.index', type: :system do
   before do
-    driven_by(:rack_test)
     sign_in admin
   end
 

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'Employee.available_kudos', type: :system, js: true do
   before do
-    driven_by(:rack_test)
     create(:employee)
     create(:employee)
   end
