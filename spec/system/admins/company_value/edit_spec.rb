@@ -21,7 +21,7 @@ describe 'admins/Company_values.edit', type: :system, js: true do
       visit edit_admins_company_value_path(company_value)
       fill_in 'Title', with: ''
       click_on 'Save'
-      expect(page).to have_css("form[action='/admins/pages/company_values/#{company_value.id}']")
+      expect(page).to have_css("form[action='/admins/company_values/#{company_value.id}']")
       expect(page).to have_content("Title can't be blank")
     end
 
@@ -30,7 +30,7 @@ describe 'admins/Company_values.edit', type: :system, js: true do
       visit edit_admins_company_value_path(company_value)
       fill_in 'Title', with: 'Title1'
       click_on 'Save'
-      expect(page).to have_css("form[action='/admins/pages/company_values/#{company_value.id}']")
+      expect(page).to have_css("form[action='/admins/company_values/#{company_value.id}']")
       expect(page).to have_content('Title has already been taken')
     end
 
@@ -39,7 +39,7 @@ describe 'admins/Company_values.edit', type: :system, js: true do
       visit edit_admins_company_value_path(company_value)
       fill_in 'Title', with: 'title1'
       click_on 'Save'
-      expect(page).to have_css("form[action='/admins/pages/company_values/#{company_value.id}']")
+      expect(page).to have_css("form[action='/admins/company_values/#{company_value.id}']")
       expect(page).to have_content('Title has already been taken')
     end
   end
