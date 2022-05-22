@@ -1,9 +1,7 @@
 require 'rails_helper'
 
-describe 'Kudo.destroy' do
+describe 'Kudo.destroy', type: :system, js: true do
   before do
-    driven_by(:rack_test)
-    # driven_by(:selenium)
     current_employee = create(:employee)
     sign_in current_employee
     create(:kudo, giver: current_employee)
@@ -13,24 +11,24 @@ describe 'Kudo.destroy' do
     context 'when accepting popup' do
       it 'remove kudo' do
         visit root_path
-        # accept_alert do
-        click_link 'Delete'
-        # end
-        # expect(page).to have_content 'Kudo was successfully destroyed.'
+        accept_alert do
+          click_link 'Delete'
+        end
+        expect(page).to have_content 'Kudo was successfully destroyed.'
         expect(page).to have_current_path root_path
         expect(page).to have_no_selector(:css, "div[id^='kudo_']")
       end
     end
 
-    # context 'when rejecting popup' do
-    #   it 'does nothing' do
-    #     visit root_path
-    #     dismiss_confirm do
-    #       click_link 'Destroy'
-    #     end
-    #     expect(page).to have_current_path root_path
-    #     expect(page).to have_selector(:css, "div[id^='kudo_']")
-    #   end
-    # end
+    context 'when rejecting popup' do
+      it 'does nothing' do
+        visit root_path
+        dismiss_confirm do
+          click_link 'Delete'
+        end
+        expect(page).to have_current_path root_path
+        expect(page).to have_selector(:css, "div[id^='kudo_']")
+      end
+    end
   end
 end

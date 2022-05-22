@@ -49,7 +49,6 @@ class KudosController < ApplicationController
   # DELETE /kudos/1
   def destroy
     @kudo.destroy
-    @kudo.giver.increment(:number_of_available_kudos).save
     flash[:notice] = 'Kudo was successfully destroyed.'
     redirect_back fallback_location: kudos_path
   end

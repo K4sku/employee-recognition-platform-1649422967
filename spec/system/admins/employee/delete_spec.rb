@@ -14,7 +14,9 @@ describe 'admins/employee.delete', type: :system, js: true do
       create(:employee)
       visit admins_employees_path
       expect(page).to have_selector(:css, "div[id^='employee_']", count: 2)
-      click_on 'Delete', match: :first
+      accept_alert do
+        click_on 'Delete', match: :first
+      end
       expect(page).to have_current_path admins_employees_path
       expect(page).to have_selector(:css, "div[id^='employee_']", count: 1)
     end
@@ -24,7 +26,9 @@ describe 'admins/employee.delete', type: :system, js: true do
       create(:kudo, giver: employee1)
       visit admins_employees_path
       expect(page).to have_selector(:css, "div[id^='employee_']", count: 2)
-      click_on 'Delete', match: :first
+      accept_alert do
+        click_on 'Delete', match: :first
+      end
       expect(page).to have_current_path admins_employees_path
       expect(page).to have_selector(:css, "div[id^='employee_']", count: 1)
       visit admins_pages_dashboard_path
@@ -36,7 +40,9 @@ describe 'admins/employee.delete', type: :system, js: true do
       create(:kudo, reciever: employee1)
       visit admins_employees_path
       expect(page).to have_selector(:css, "div[id^='employee_']", count: 2)
-      click_on 'Delete', match: :first
+      accept_alert do
+        click_on 'Delete', match: :first
+      end
       expect(page).to have_current_path admins_employees_path
       expect(page).to have_selector(:css, "div[id^='employee_']", count: 1)
       visit admins_pages_dashboard_path
