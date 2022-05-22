@@ -5,7 +5,7 @@ describe 'Kudo.destroy' do
     driven_by(:rack_test)
     # driven_by(:selenium)
     current_employee = create(:employee)
-    login_as(current_employee, scope: :employee)
+    sign_in current_employee
     create(:kudo, giver: current_employee)
   end
 

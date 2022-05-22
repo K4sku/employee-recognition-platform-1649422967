@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'admins/Company_values.create', type: :system, js: true do
   before do
     driven_by(:rack_test)
-    login_as(admin, { scope: :admin })
+    sign_in admin
   end
 
   let(:admin) { create(:admin) }

@@ -5,7 +5,7 @@ describe 'admins/employee.index', type: :system, js: true do
     driven_by(:rack_test)
     create(:employee)
     create(:employee)
-    login_as(admin, scope: :admin)
+    sign_in admin
   end
 
   let(:employee) { create(:employee) }

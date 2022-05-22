@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'admins/Company_values.index', type: :system do
   before do
     driven_by(:rack_test)
-    login_as(admin, { scope: :admin })
+    sign_in admin
   end
 
   let(:admin) { create(:admin) }
@@ -11,8 +11,7 @@ describe 'admins/Company_values.index', type: :system do
 
   context 'when admin is on index page' do
     it 'show all company_values' do
-      create(:company_value)
-      create(:company_value)
+      create_list(:company_value, 2)
       visit admins_company_values_path
       expect(page).to have_selector(:css, "div[id^='company_value_']", count: 2)
     end

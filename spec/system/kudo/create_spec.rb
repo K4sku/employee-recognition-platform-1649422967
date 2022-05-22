@@ -5,7 +5,7 @@ describe 'Kudo.create', type: :system, js: true do
     driven_by(:rack_test)
     create(:employee)
     create(:employee)
-    login_as(employee, scope: :employee)
+    sign_in employee
   end
 
   let(:employee) { create(:employee) }

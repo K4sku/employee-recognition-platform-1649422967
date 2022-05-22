@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'admin/pages/dashboard/Kudo.destroy' do
   before do
     driven_by(:rack_test)
-    login_as(admin, scope: :admin)
+    sign_in admin
     create(:kudo)
   end
 
