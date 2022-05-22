@@ -1,26 +1,23 @@
 class KudosController < ApplicationController
-  before_action :set_kudo, only: %i[show edit update destroy]
-  before_action :authorize!, only: %i[update edit destroy]
-  before_action :authenticate_employee!, only: :destroy, unless: :current_admin
-  before_action :authenticate_employee!, except: :destroy
+  before_action :authenticate_employee!
 
-  # GET /kudos
   def index
-    @kudos = Kudo.includes(:giver, :reciever).all.order('id DESC')
+    @kudos = Kudo.all.includes(:giver, :reciever).order('created_at DESC')
   end
 
-  # GET /kudos/1
-  def show; end
+  def show
+    @kudo = find_kudo
+  end
 
-  # GET /kudos/new
   def new
     @kudo = Kudo.new
   end
 
-  # GET /kudos/1/edit
-  def edit; end
+  def edit
+    @kudo = find_kudo
+    authorize!
+  end
 
-  # POST /kudos
   def create
     @kudo = Kudo.new(kudo_params)
     @kudo.giver = current_employee
@@ -37,8 +34,9 @@ class KudosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /kudos/1
   def update
+    @kudo = find_kudo
+    authorize!
     if @kudo.update(kudo_params)
       redirect_to @kudo, notice: 'Kudo was successfully updated.'
     else
@@ -46,8 +44,9 @@ class KudosController < ApplicationController
     end
   end
 
-  # DELETE /kudos/1
   def destroy
+    @kudo = find_kudo
+    authorize!
     @kudo.destroy
     flash[:notice] = 'Kudo was successfully destroyed.'
     redirect_back fallback_location: kudos_path
@@ -55,9 +54,8 @@ class KudosController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_kudo
-    @kudo = Kudo.find(params[:id])
+  def find_kudo
+    Kudo.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
@@ -66,6 +64,6 @@ class KudosController < ApplicationController
   end
 
   def authorize!
-    raise AuthorizationError unless @kudo.giver == current_employee || admin_signed_in?
+    raise AuthorizationError unless @kudo.giver == current_employee
   end
 end
