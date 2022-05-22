@@ -16,7 +16,7 @@ describe 'Kudo.destroy', type: :system, js: true do
         end
         expect(page).to have_content 'Kudo was successfully destroyed.'
         expect(page).to have_current_path root_path
-        expect(page).to have_no_selector(:css, "div[id^='kudo_']")
+        expect(page).to have_no_selector(:css, "div[test_test_id^='kudo_']")
       end
     end
 
@@ -27,7 +27,7 @@ describe 'Kudo.destroy', type: :system, js: true do
           click_link 'Delete'
         end
         expect(page).to have_current_path root_path
-        expect(page).to have_selector(:css, "div[id^='kudo_']")
+        expect(page).to have_selector(:css, "div[test_id^='kudo_']")
       end
     end
   end

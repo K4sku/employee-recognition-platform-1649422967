@@ -14,7 +14,7 @@ describe 'admin/pages#dashboard', type: :system, js: true do
       create(:kudo)
       create(:kudo)
       visit admins_kudos_path
-      expect(page).to have_selector(:css, "div[id^='kudo_']", count: 3)
+      expect(page).to have_selector(:css, "div[test_id^='kudo_']", count: 3)
     end
 
     it 'show delete links' do

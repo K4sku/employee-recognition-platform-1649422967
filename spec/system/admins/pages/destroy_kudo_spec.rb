@@ -15,7 +15,7 @@ describe 'admin/pages/dashboard/Kudo.destroy', js: true do
         click_link 'Delete'
       end
       expect(page).to have_current_path admins_kudos_path
-      expect(page).to have_no_selector(:css, "div[id^='kudo_']")
+      expect(page).to have_no_selector(:css, "div[test_id^='kudo_']")
     end
   end
 end

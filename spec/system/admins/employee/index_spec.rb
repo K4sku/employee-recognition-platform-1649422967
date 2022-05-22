@@ -13,7 +13,7 @@ describe 'admins/employee.index', type: :system, js: true do
   context 'when admin is logged' do
     it 'show all employess' do
       visit admins_employees_path
-      expect(page).to have_selector(:css, "div[id^='employee_']", count: 2)
+      expect(page).to have_selector(:css, "div[test_id^='employee_']", count: 2)
     end
 
     it 'shows delete links' do
