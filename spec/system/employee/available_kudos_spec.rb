@@ -50,14 +50,14 @@ describe 'Employee.available_kudos', type: :system, js: true do
       sign_in no_kudo_employee
       create(:kudo, giver: no_kudo_employee)
       visit kudos_path
-      expect(page).to have_selector(:css, "div[id^='kudo_']", count: 1)
+      expect(page).to have_selector(:css, "div[test_id^='kudo_']", count: 1)
       expect(page).to have_content 'Available kudos: 0'
       accept_alert do
         click_on 'Delete'
       end
       expect(page).to have_current_path kudos_path
       expect(page).to have_content 'Kudo was successfully destroyed.'
-      expect(page).to have_selector(:css, "div[id^='kudo_']", count: 0)
+      expect(page).to have_selector(:css, "div[test_id^='kudo_']", count: 0)
       expect(page).to have_content 'Available kudos: 0'
     end
   end

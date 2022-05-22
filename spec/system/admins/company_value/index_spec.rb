@@ -12,7 +12,7 @@ describe 'admins/Company_values.index', type: :system do
     it 'show all company_values' do
       create_list(:company_value, 2)
       visit admins_company_values_path
-      expect(page).to have_selector(:css, "div[id^='company_value_']", count: 2)
+      expect(page).to have_selector(:css, "div[test_id^='company_value_']", count: 2)
     end
 
     it 'show New Company Value link' do

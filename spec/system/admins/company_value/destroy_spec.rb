@@ -13,7 +13,7 @@ describe 'admins/Company_values.edit', type: :system do
       visit admins_company_values_path
       click_on 'Delete'
       expect(page).to have_current_path admins_company_values_path
-      expect(page).not_to have_selector(:css, "div[id^='company_value_']")
+      expect(page).not_to have_selector(:css, "div[test_id^='company_value_']")
     end
   end
 end

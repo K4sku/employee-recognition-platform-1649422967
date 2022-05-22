@@ -43,7 +43,7 @@ describe 'admins/emplyees.edit', type: :system, js: true do
         fill_in 'Number of available kudos', with: 2
         click_on 'Save Employee'
         expect(page).to have_current_path admins_employees_path
-        within "div[id='employee_#{employee.id}']" do
+        within "div[test_id='employee_#{employee.id}']" do
           expect(page).to have_content('newemail@test.com')
           expect(page).to have_content('Available kudos: 2')
         end
@@ -60,7 +60,7 @@ describe 'admins/emplyees.edit', type: :system, js: true do
         fill_in 'Number of available kudos', with: 2
         click_on 'Save Employee'
         expect(page).to have_current_path admins_employees_path
-        within "div[id='employee_#{employee.id}']" do
+        within "div[test_id='employee_#{employee.id}']" do
           expect(page).to have_content('Available kudos: 2')
         end
         expect(Employee.find(employee.id).valid_password?('oldpassword')).to be true

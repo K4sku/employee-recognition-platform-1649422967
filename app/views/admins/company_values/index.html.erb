@@ -10,7 +10,7 @@
   <div class='box'>
     <div class="list has-hoverable-list-items has-visible-pointer-controls">
       <% @company_values.each do |company_value| %>
-        <div class="list-item" id="company_value_<%= company_value.id %>">
+        <div class="list-item" test_id="company_value_<%= company_value.id %>">
           <div class="list-item-content">
             <div class="list-item-title"><%= company_value.title %></div>
             <div class="list-item-description">
