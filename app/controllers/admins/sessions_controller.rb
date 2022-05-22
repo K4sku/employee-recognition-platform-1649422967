@@ -11,7 +11,7 @@ module Admins
 
     # Login Path (if already logged in)
     def after_sign_in_path_for(_resource)
-      admins_pages_dashboard_path
+      admins_kudos_path
     end
 
     # Logout Path

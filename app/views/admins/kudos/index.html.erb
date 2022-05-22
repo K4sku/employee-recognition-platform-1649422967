@@ -1,0 +1,39 @@
+<div class='container is-fluid'>
+  <nav class="level is-mobile">
+    <div class="level-left">
+      <p class='is-size-3'><strong>Kudos</strong></p>
+    </div>
+  </nav>
+  <div class='box'>
+    <div class="list has-hoverable-list-items has-visible-pointer-controls">
+      <% @kudos.each do |kudo| %>
+        <div class="list-item" id="kudo_<%= kudo.id %>">
+          <div class="list-item-content">
+            <div class="list-item-title"><%= kudo.title %></div>
+            <div class="list-item-description">
+              <p><%= kudo.content %></p>
+              <div>
+                <div class="has-text-black columns">
+                  <div class="column is-one-fifth">
+                    <span class="has-text-weight-bold">Giver: </span> <%= kudo.giver.email %>
+                  </div>
+                  <div class="column is-one-quater">
+                    <span class="has-text-weight-bold">Reciever: </span> <%= kudo.reciever.email %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="list-item-controls">
+            <div class="buttons is-right">
+              <% if admin_signed_in?%>
+                <%= link_to 'Delete', admins_kudo_path(kudo), method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger is-light is-outlined" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
