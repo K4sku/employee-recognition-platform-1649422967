@@ -4,5 +4,6 @@ FactoryBot.define do
     content { 'Kudo Content' }
     giver
     reciever
+    company_value
   end
 end
