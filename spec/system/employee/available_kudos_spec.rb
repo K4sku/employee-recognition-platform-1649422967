@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe 'Employee.available_kudos', type: :system, js: true do
   before do
-    create(:employee)
-    create(:employee)
+    create_list(:employee, 2)
+    create :company_value
   end
 
   let(:employee) { create(:employee) }
@@ -17,8 +17,10 @@ describe 'Employee.available_kudos', type: :system, js: true do
         expect(page).to have_content 'Available kudos: 10'
         fill_in 'kudo_title', with: 'Lorem ipsum dolor sit amet'
         fill_in 'kudo_content', with: 'consectetur adipiscing elit. Sed dignissim dignissim urna vel ultrices.'
-        last_option = page.all('option').last.text
-        page.select last_option, from: 'kudo_reciever_id'
+        last_option_reciever = page.find_field('Reciever').all('option').last.text
+        page.select last_option_reciever, from: 'kudo_reciever_id'
+        last_option_company_value = page.find_field('Company value').all('option').last.text
+        page.select last_option_company_value, from: 'kudo_company_value_id'
         click_on 'Save Kudo'
         expect(page).to have_current_path kudos_path
         expect(page).to have_content 'Lorem ipsum dolor sit amet'
@@ -35,8 +37,10 @@ describe 'Employee.available_kudos', type: :system, js: true do
       expect(page).to have_content 'Available kudos: 0'
       fill_in 'kudo_title', with: 'Lorem ipsum dolor sit amet'
       fill_in 'kudo_content', with: 'consectetur adipiscing elit. Sed dignissim dignissim urna vel ultrices.'
-      last_option = page.all('option').last.text
-      page.select last_option, from: 'kudo_reciever_id'
+      last_option_reciever = page.find_field('Reciever').all('option').last.text
+      page.select last_option_reciever, from: 'kudo_reciever_id'
+      last_option_company_value = page.find_field('Company value').all('option').last.text
+      page.select last_option_company_value, from: 'kudo_company_value_id'
       click_on 'Save Kudo'
       expect(page).to have_current_path kudos_path
       expect(page).to have_no_content 'Lorem ipsum dolor sit amet'
