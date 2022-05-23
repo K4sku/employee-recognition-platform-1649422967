@@ -1,23 +1,40 @@
 <%= bulma_form_with(model: kudo) do |form| %>
 
-  <div class="field">
-    <%= form.text_field :title, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
+  <%= form.text_field :title, autofocus: true %>
+  <%= form.text_area :content %>
+  <div class='field'>
     <%= form.label :reciever_id, class: 'label' %>
-      <div class="control">
-    <div class="select">
-    <%= form.collection_select :reciever_id, Employee.where.not(id: current_employee.id), :id, :email %>
-  </div>
-  </div>
+    <div class="control">
+      <div class="select <%=kudo.errors.group_by_attribute.include?(:reciever) ? 'is-danger' : '' %>" >
+        <%= form.collection_select :reciever_id, Employee.where.not(id: current_employee.id), :id, :email, include_blank: 'Select Reciever' %>
+      </div>
+        <% if kudo.errors.group_by_attribute.include?(:reciever) %>
+          <div class='help is-danger'>
+            <% kudo.errors.full_messages_for(:reciever).each do |message| %>
+              <%= message %><br>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
   </div>
 
-  <div class="actions">
+  <div class='field'>
+    <%= form.label :company_value_id, class: 'label' %>
+    <div class="control">
+      <div class="select <%=kudo.errors.group_by_attribute.include?(:company_value) ? 'is-danger' : '' %>" >
+        <%= form.collection_select :company_value_id, CompanyValue.all, :id, :title, include_blank: 'Select Company Value' %>
+      </div>
+        <% if kudo.errors.group_by_attribute.include?(:company_value) %>
+          <div class='help is-danger'>
+            <% kudo.errors.full_messages_for(:company_value).each do |message| %>
+              <%= message %><br>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+
+  <div class="actions mt-3">
     <%= form.submit "Save Kudo", class: "button is-primary" %>
   </div>
 <% end %>

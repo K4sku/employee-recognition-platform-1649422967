@@ -2,7 +2,7 @@ class KudosController < ApplicationController
   before_action :authenticate_employee!
 
   def index
-    @kudos = Kudo.all.includes(:giver, :reciever).order('created_at DESC')
+    @kudos = Kudo.all.includes(:giver, :reciever, :company_value).order('created_at DESC')
   end
 
   def show
@@ -60,7 +60,7 @@ class KudosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def kudo_params
-    params.require(:kudo).permit(:title, :content, :giver_id, :reciever_id)
+    params.require(:kudo).permit(:title, :content, :giver_id, :reciever_id, :company_value_id)
   end
 
   def authorize!
