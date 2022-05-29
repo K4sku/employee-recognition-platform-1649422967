@@ -1,0 +1,16 @@
+<div class='section'>
+  <div class='box'>
+    <p>
+      <strong>Title:</strong>
+      <%= @reward.title %>
+    </p>
+    <p>
+    <%= @reward.description %>
+    </p>
+
+    <div class='mt-3'>
+      <%= link_to 'Edit', edit_admins_reward_path(@reward), class: 'button' %>
+      <%= link_to 'Back', admins_rewards_path, class: 'button' %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class='section'>
+  <p class='is-size-3'><strong>Edit Reward</strong></p>
+  <%= render 'form', reward: @reward %>
+
+  <div class='mt-3'>
+    <%= link_to 'Show', admins_reward_path(@reward), class: 'button' %>
+    <%= link_to 'Back', admins_rewards_path, class: 'button' %>
+  </div>
+</div>

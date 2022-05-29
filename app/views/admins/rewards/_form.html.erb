@@ -1,0 +1,10 @@
+<%= bulma_form_with(model: [:admins, reward]) do |form| %>
+
+  <%= form.text_field :title, autofocus: true %>
+  <%= form.text_field :description %>
+  <%= form.number_field :price, min: 1, step: 1 %>
+
+  <div class="actions">
+    <%= form.submit "Save Reward", class: "button is-primary" %>
+  </div>
+<% end %>
