@@ -26,3 +26,7 @@ Admin.create!([
   {email: "admin@test.com", password: "adminadmin", password_confirmation: "adminadmin"},
   {email: "admin2@test.com", password: "adminadmin", password_confirmation: "adminadmin"}
   ])
+
+(1..6).each do |i|
+  Reward.create(title: "Reward #{i}", description: "Reward #{i} description", price: i)
+end
