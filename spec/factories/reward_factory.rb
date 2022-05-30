@@ -1,8 +1,7 @@
 FactoryBot.define do
-  # TODO: this
   factory :reward do
-    title { "MyString" }
-    description { "MyString" }
+    title { 'Reward title' }
+    description { 'Reward description' }
     price { 1 }
   end
 end
