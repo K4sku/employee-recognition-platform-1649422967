@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :employees
   
   resources :kudos
-  resources :reward, only: %i[index show]
+  resources :rewards, only: %i[index show]
   root to: 'kudos#index'
   
   namespace :admins do
