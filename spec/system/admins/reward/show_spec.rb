@@ -6,11 +6,10 @@ describe 'Reward show action', type: :system do
   end
 
   let(:admin) { create(:admin) }
-  let(:reward) { create(:reward) }
+  let!(:reward) { create(:reward) }
 
   context 'when admin is on reward show page' do
     it 'show reward title' do
-      reward = create(:reward)
       visit admins_reward_path(reward)
       expect(page).to have_content(reward.title)
       expect(page).to have_content(reward.description)
@@ -18,13 +17,11 @@ describe 'Reward show action', type: :system do
     end
 
     it 'show Edit link' do
-      reward = create(:reward)
       visit admins_reward_path(reward)
       expect(page).to have_link('Edit')
     end
 
     it 'show Back link' do
-      reward = create(:reward)
       visit admins_reward_path(reward)
       expect(page).to have_link('Back')
     end
