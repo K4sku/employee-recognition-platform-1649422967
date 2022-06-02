@@ -6,6 +6,7 @@ describe 'Reward create action', type: :system do
   end
 
   let(:admin) { create(:admin) }
+  let!(:reward) { build(:reward) }
 
   context 'when admin is on index page' do
     it 'New Reward link' do
@@ -15,27 +16,17 @@ describe 'Reward create action', type: :system do
     end
   end
 
-  context 'when admin is on new reward page' do
-    it 'displays reward form' do
-      visit new_admins_reward_path
-      expect(page).to have_css("form[action='/admins/rewards']")
-      expect(page).to have_field('Title')
-      expect(page).to have_field('Description')
-      expect(page).to have_field('Price', type: 'number')
-    end
-  end
-
   context 'when creating valid reward' do
     it 'saves reward' do
       visit new_admins_reward_path
-      fill_in 'Title', with: 'Reward Title 1'
-      fill_in 'Description', with: 'Lorem ipsum'
-      fill_in 'Price', with: 10
+      fill_in 'Title', with: reward.title
+      fill_in 'Description', with: reward.description
+      fill_in 'Price', with: reward.price
       click_on 'Save Reward'
       expect(page).to have_current_path admins_rewards_path
-      expect(page).to have_content('Reward Title 1')
-      expect(page).to have_content('Lorem ipsum')
-      expect(page).to have_content('Price: 10')
+      expect(page).to have_content(reward.title)
+      expect(page).to have_content(reward.description)
+      expect(page).to have_content(reward.price)
     end
   end
 
