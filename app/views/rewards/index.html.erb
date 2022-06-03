@@ -1,0 +1,18 @@
+<div class='container is-fluid'>
+  <nav class="level is-mobile">
+    <div class="level-left">
+      <p class='is-size-3'><strong>Rewards</strong></p>
+    </div>
+  </nav>
+  <div class="is-flex is-flex-wrap-wrap">
+    <% @rewards.each do |reward| %>
+      <div class="box m-3 p-5 is-4" test_id="reward_<%=reward.id%>">
+        <article class="is-child">
+          <p class="title"><%= reward.title %></p>
+          <p class="subtitle">Price: <%= reward.price %></p>
+          <%= link_to 'Show details', reward, class: 'button' %>
+        </article>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,6 +1,4 @@
-class KudosController < ApplicationController
-  before_action :authenticate_employee!
-
+class KudosController < EmployeeBaseController
   def index
     @kudos = Kudo.all.includes(:giver, :reciever, :company_value).order('created_at DESC')
   end
