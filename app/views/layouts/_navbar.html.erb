@@ -20,6 +20,11 @@
         <div class="navbar-item">
           <%= style_avaible_kudos(current_employee.number_of_available_kudos) %>
         </div>
+        <div class=navbar-item">
+          <span class="tag is-large"> 
+            Points: <%= current_employee.points %>
+          </span>
+        </div>
         <%= display_curent_users_email_on_test_or_development(current_employee) %>
         <div class="navbar-item">
           <div class="buttons">
