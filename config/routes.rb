@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   resources :kudos
   resources :rewards, only: %i[index show]
-  resources :orders, only: :create
+  resources :orders, only: %i[create]
   root to: 'kudos#index'
   
   namespace :admins do
