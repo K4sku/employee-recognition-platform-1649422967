@@ -12,6 +12,7 @@
     </p>
 
     <div class='mt-3'>
+      <%= link_to 'CLAIM REWARD!', orders_path(reward: @reward), method: :post, data: { confirm: 'Are you sure?' }, class: 'button is-primary' %>
       <%= link_to 'Back', rewards_path, class: 'button' %>
     </div>
   </div>
