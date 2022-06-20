@@ -15,10 +15,11 @@ describe 'Reward show action', type: :system do
       expect(page).to have_content(reward.description)
       expect(page).to have_content(reward.price)
     end
-  end
 
-  it 'show Back link' do
-    visit reward_path(reward)
-    expect(page).to have_link('Back')
+    it 'show Back and Claim Reward! links' do
+      visit reward_path(reward)
+      expect(page).to have_link('Back')
+      expect(page).to have_link('CLAIM REWARD!')
+    end
   end
 end

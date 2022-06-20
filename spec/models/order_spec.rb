@@ -8,12 +8,6 @@ RSpec.describe Order, type: :model do
   describe 'validations' do
     it { should belong_to(:employee) }
     it { should belong_to(:reward) }
-
-    it 'is expected check that employee can afford reward' do
-      order = described_class.new(employee: employee, reward: expensive_reward)
-      expect(order).to be_invalid
-      expect(order.errors).to include('can_not_afford')
-    end
   end
   # rubocop:enable RSpec/ImplicitExpect
 end
