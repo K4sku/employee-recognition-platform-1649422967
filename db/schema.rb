@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2022_06_20_190549) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "employee_id", null: false
-    t.bigint "reward_id", null: false
+    t.bigint "reward_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "purchase_price", null: false
