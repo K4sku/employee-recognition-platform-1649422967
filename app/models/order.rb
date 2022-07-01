@@ -9,8 +9,4 @@ class Order < ApplicationRecord
 
     errors.add(:can_not_afford, 'You can not afford this reward')
   end
-
-  def set_purchase_price
-    self.purchase_price = reward.price
-  end
 end
