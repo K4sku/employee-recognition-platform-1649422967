@@ -4,6 +4,10 @@ module Admins
       @employees = Employee.all.order('id ASC')
     end
 
+    def show
+      employee
+    end
+
     def edit
       employee
     end
