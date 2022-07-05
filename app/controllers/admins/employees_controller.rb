@@ -5,13 +5,12 @@ module Admins
     end
 
     def edit
-      @employee = find_employee
+      employee
     end
 
     def update
-      @employee = find_employee
       remove_password_from_hash_if_empty
-      if @employee.update(employee_params)
+      if employee.update(employee_params)
         redirect_to admins_employees_path, notice: 'Employee was successfully updated.'
       else
         render :edit
@@ -19,13 +18,16 @@ module Admins
     end
 
     def destroy
-      @employee = find_employee
-      @employee.destroy
+      employee.destroy
       flash[:notice] = 'Employee was successfully destroyed.'
       redirect_back fallback_location: kudos_path
     end
 
     private
+
+    def employee
+      @employee ||= Employee.find(params[:id])
+    end
 
     def find_employee
       Employee.find(params[:id])
