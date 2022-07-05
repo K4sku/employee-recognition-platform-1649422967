@@ -18,6 +18,7 @@
           <div class="list-item-controls">
             <div class="buttons is-right">
               <% if admin_signed_in?%>
+                <%= link_to 'Show', admins_employee_path(employee), class: "button is-outlined"  %>
                 <%= link_to 'Edit', edit_admins_employee_path(employee), class: "button is-outlined" %>
                 <%= link_to 'Delete', admins_employee_path(employee), method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger is-light is-outlined" %>
               <% end %>
