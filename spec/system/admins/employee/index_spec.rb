@@ -26,7 +26,7 @@ describe 'admins/employee.index', type: :system, js: true do
       expect(page).to have_link('Edit', count: 2)
     end
 
-    it 'shows show links' do
+    it 'displays show links' do
       visit admins_employees_path
       expect(page).to have_link('Show', count: 2)
     end
