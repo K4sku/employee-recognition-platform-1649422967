@@ -33,10 +33,6 @@ module Admins
       @employee ||= Employee.find(params[:id])
     end
 
-    def find_employee
-      Employee.find(params[:id])
-    end
-
     # Only allow a list of trusted parameters through.
     def employee_params
       params.require(:employee).permit(:email, :password, :password_confirmation, :number_of_available_kudos)
