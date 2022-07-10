@@ -4,7 +4,6 @@ describe 'admins see employees rewards', type: :system, js: true do
   before do
     create(:employee)
     create(:kudo, reciever: employee)
-    # create(:order, employee: employee, purchase_price: reward.price)
     sign_in admin
   end
 
