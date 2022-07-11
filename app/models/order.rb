@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :employee
   belongs_to :reward
+  enum status: { placed: 'placed', delivered: 'delivered', not_set: 'not_set' }, _suffix: true
 
   validate :can_employee_afford_price, on: :create
 
