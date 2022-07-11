@@ -5,7 +5,7 @@ class OrdersController < EmployeeBaseController
 
   def create
     reward = Reward.find(order_params[:reward_id])
-    @order = Order.new(reward: reward, employee: current_employee, purchase_price: reward.price)
+    @order = Order.new(reward: reward, employee: current_employee, purchase_price: reward.price, status: :placed)
     if order.save
       redirect_to rewards_path, notice: 'You have bought a reward!'
     else
