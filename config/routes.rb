@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :employees, only: %i[index show edit update destroy]
     resources :company_values
     resources :rewards
-    resources :orders, only: %i[index deliver]
+    resources :orders, only: %i[index] do
+        put 'deliver', on: :member
+    end
     root to: 'pages#dashboard'
   end
 end
