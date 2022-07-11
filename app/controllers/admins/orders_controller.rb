@@ -8,6 +8,7 @@ module Admins
     def deliver
       authorize!
       order.delivered_status!
+      redirect_back fallback_location: admins_orders_path
     end
 
     private
