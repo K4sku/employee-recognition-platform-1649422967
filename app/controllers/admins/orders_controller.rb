@@ -1,7 +1,7 @@
 module Admins
   class OrdersController < BaseController
     def index
-      @orders = Order.all.includes(:employee, :reward).order(status: :desc)
+      @orders = Order.all.includes(:employee, :reward).order(status: :asc)
       @undelivered_orders_count = count_undelivered
     end
 
