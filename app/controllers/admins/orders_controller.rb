@@ -2,7 +2,6 @@ module Admins
   class OrdersController < BaseController
     def index
       @orders = Order.all.includes(:employee, :reward).order(status: :asc)
-      @undelivered_orders_count = count_undelivered
     end
 
     def deliver
@@ -19,10 +18,6 @@ module Admins
 
     def authorize!
       raise AuthorizationError unless admin_signed_in?
-    end
-
-    def count_undelivered
-      @orders.count { |order| order.status != 'delivered' }
     end
   end
 end
