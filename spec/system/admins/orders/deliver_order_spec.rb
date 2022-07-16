@@ -26,7 +26,7 @@ describe 'Admin can deliver placed orders', type: :system, js: true do
   end
 
   context 'when admin delivers order' do
-    it 'does not change displayed price' do
+    it 'decreases undelivered orders count, marks and sort delivered' do
       visit admins_orders_path
       first_deliver_link = page.first(:link, text: 'Deliver')
       accept_confirm do
