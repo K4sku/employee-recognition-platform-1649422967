@@ -22,6 +22,6 @@ module NavbarHelper
   end
 
   def undelivered_orders_count
-    @undelivered_orders_count ||= Order.not_delivered_status.count
+    @undelivered_orders_count ||= Order.not_delivered.count
   end
 end

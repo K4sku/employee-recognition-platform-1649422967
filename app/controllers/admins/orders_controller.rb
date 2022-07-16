@@ -5,7 +5,7 @@ module Admins
     end
 
     def deliver
-      order.delivered_status!
+      order.delivered!
       redirect_back fallback_location: admins_orders_path
     end
 

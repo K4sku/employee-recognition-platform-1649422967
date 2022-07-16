@@ -19,7 +19,7 @@
           </div>
           <div class="list-item-controls">
             <div class="buttons is-right">
-              <% unless order.delivered_status? %>
+              <% unless order.delivered? %>
                 <%= link_to 'Deliver', deliver_admins_order_path(order), method: :put, data: { confirm: 'This action can not be undone. Do you want to deliver reward?' }, class: "button is-outlined"  %>
               <% else %>
                 <%= link_to 'Delivered', '#', disabled: true, class: "button is-outlined"  %>
