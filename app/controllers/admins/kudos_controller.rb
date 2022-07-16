@@ -6,16 +6,9 @@ module Admins
 
     def destroy
       @kudo = Kudo.find(params[:id])
-      authorize!
       @kudo.destroy
       flash[:notice] = 'Kudo was successfully destroyed.'
       redirect_to admins_kudos_path
-    end
-
-    private
-
-    def authorize!
-      raise AuthorizationError unless admin_signed_in?
     end
   end
 end

@@ -5,7 +5,6 @@ module Admins
     end
 
     def deliver
-      authorize!
       order.delivered_status!
       redirect_back fallback_location: admins_orders_path
     end
@@ -14,10 +13,6 @@ module Admins
 
     def order
       @order ||= Order.find(params[:id])
-    end
-
-    def authorize!
-      raise AuthorizationError unless admin_signed_in?
     end
   end
 end
