@@ -20,4 +20,8 @@ module NavbarHelper
       "#{user.class.name}: #{user.email}"
     end
   end
+
+  def undelivered_orders_count
+    @undelivered_orders_count ||= Order.not_delivered.count
+  end
 end

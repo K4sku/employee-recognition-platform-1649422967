@@ -60,8 +60,17 @@ ActiveRecord::Schema.define(version: 2022_07_11_073501) do
     t.index ["reciever_id"], name: "index_kudos_on_reciever_id"
   end
 
-# Could not dump table "orders" because of following StandardError
-#   Unknown type 'order_status' for column 'status'
+  create_table "orders", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.bigint "reward_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "purchase_price", null: false
+    t.integer "status", null: false
+    t.index ["employee_id"], name: "index_orders_on_employee_id"
+    t.index ["reward_id"], name: "index_orders_on_reward_id"
+    t.index ["status"], name: "index_orders_on_status"
+  end
 
   create_table "rewards", force: :cascade do |t|
     t.string "title", null: false
