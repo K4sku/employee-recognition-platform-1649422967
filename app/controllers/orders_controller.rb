@@ -1,6 +1,8 @@
 class OrdersController < EmployeeBaseController
   def index
     @orders = Order.where(employee: current_employee).includes(:reward)
+    @orders = @orders.delivered if order_params[:query] == 'delivered'
+    @orders = @orders.placed if order_params[:query] == 'not_delivered'
   end
 
   def create
@@ -17,7 +19,7 @@ class OrdersController < EmployeeBaseController
   private
 
   def order_params
-    params.permit(:reward_id)
+    params.permit(:reward_id, :query)
   end
 
   def order
