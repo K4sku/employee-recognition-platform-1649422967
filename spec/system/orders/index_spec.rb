@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Employee can list bought rewards', type: :system do
+describe 'Employee can list bought rewards', type: :system, js: true do
   before do
     sign_in employee
     sign_in admin
