@@ -43,6 +43,10 @@ Rails.application.configure do
   # Set default url options per Devise requirement
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  # Set the delivery method from letter_opener gem https://github.com/ryanb/letter_opener
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
