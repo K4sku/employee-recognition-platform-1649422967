@@ -1,25 +1,51 @@
-<h2>Change your password</h2>
+<div class='section'>
+  <div class='container is-max-desktop'>
+    <div class='box'>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "employees/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+      <p class='is-size-4'><strong>Change your password</strong></p>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.hidden_field :reset_password_token %>
+
+        <div class="field">
+          <div class='control'>
+            <%= f.label :password, "New password" %>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+            <% end %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password",
+          class: resource.errors.group_by_attribute.include?(:password) ? 'input is-danger' : 'input' %>
+          </div>
+          <% if resource.errors.group_by_attribute.include?(:password) %>
+            <div class='help is-danger'>
+              <% resource.errors.full_messages_for(:password).each do |message| %>
+                <%= message %><br>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="field">
+          <div class='control'>
+            <%= f.label :password_confirmation, "Confirm new password" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",
+          class: resource.errors.group_by_attribute.include?(:password_confirmation) ? 'input is-danger' : 'input' %>
+          </div>
+          <% if resource.errors.group_by_attribute.include?(:password_confirmation) %>
+            <div class='help is-danger'>
+              <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+                <%= message %><br>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Change my password", class: 'button is-primary' %>
+        </div>
+      <% end %>
+
+      <%= render "employees/shared/links" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "employees/shared/links" %>
+</div>
