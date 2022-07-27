@@ -1,8 +1,8 @@
 class OrdersController < EmployeeBaseController
   def index
     @orders = Order.where(employee: current_employee).includes(:reward)
-    @orders = @orders.delivered if order_params[:query] == 'delivered'
-    @orders = @orders.placed if order_params[:query] == 'not_delivered'
+    @orders = @orders.delivered if order_params[:status] == 'delivered'
+    @orders = @orders.placed if order_params[:status] == 'not_delivered'
   end
 
   def create

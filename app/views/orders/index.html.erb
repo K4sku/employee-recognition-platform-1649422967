@@ -5,9 +5,9 @@
     </div>
     <div class="tabs is-centered">
       <ul>
-        <li class=<%= active_if_filter_selected('delivered') %>><%= link_to 'delivered', orders_path(query: 'delivered') %></li>
-        <li class=<%= active_if_filter_selected('not_delivered') %>><%= link_to 'not delivered', orders_path(query: 'not_delivered') %></li>
-        <li class=<%= active_if_filter_selected('all') %>><%= link_to 'all', orders_path(query: 'all')%></li>
+        <li class=<%= active_if_filter_selected('delivered') %>><%= link_to 'delivered', orders_path(status: 'delivered') %></li>
+        <li class=<%= active_if_filter_selected('not_delivered') %>><%= link_to 'not delivered', orders_path(status: 'not_delivered') %></li>
+        <li class=<%= active_if_filter_selected('all') %>><%= link_to 'all', orders_path(status: 'all')%></li>
       </ul>
     </div>
   </nav>
