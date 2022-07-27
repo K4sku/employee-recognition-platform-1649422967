@@ -19,7 +19,7 @@ class OrdersController < EmployeeBaseController
   private
 
   def order_params
-    params.permit(:reward_id, :query)
+    params.permit(:reward_id, :status)
   end
 
   def order
