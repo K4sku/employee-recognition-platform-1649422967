@@ -71,6 +71,10 @@ Rails.application.configure do
   # Log disallowed deprecations.
   config.active_support.disallowed_deprecation = :log
 
+  config.action_mailer.default_url_options = { host: 'https://hidden-earth-52528.herokuapp.com/', port: 443 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
 
