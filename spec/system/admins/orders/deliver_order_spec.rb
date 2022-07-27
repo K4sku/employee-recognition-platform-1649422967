@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin can deliver placed orders', type: :system, js: true do
+describe 'Admin can deliver placed orders', type: :system do
   before do
     sign_in admin
     create_list(:kudo, 2, reciever: employee)
@@ -29,9 +29,7 @@ describe 'Admin can deliver placed orders', type: :system, js: true do
     it 'decreases undelivered orders count, marks and sort delivered' do
       visit admins_orders_path
       first_deliver_link = page.first(:link, text: 'Deliver')
-      accept_confirm do
-        click_link 'Deliver', match: :first
-      end
+      click_link 'Deliver', match: :first
       expect(first_deliver_link).not_to be(page.first(:link, text: 'Deliver'))
       expect(page).to have_selector('a', text: 'Orders ( 1 )', visible: :all)
       expect(page).to have_link('Deliver', count: 1, exact: true)
