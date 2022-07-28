@@ -115,3 +115,13 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 end
+
+ActionMailer::Base.smtp_settings = {
+  domain:         'cklos.com',
+  address:        "smtp.sendgrid.net",
+  port:            587,
+  authentication: :plain,
+  user_name:      'apikey',
+  enable_starttls_auto: true,
+  password:       Rails.application.credentials.sendgrid[:api_key]
+}
