@@ -35,5 +35,3 @@
 yarn-debug.log*
 .yarn-integrity
 spec/support/examples.txt
-
-/config/credentials/development.key
