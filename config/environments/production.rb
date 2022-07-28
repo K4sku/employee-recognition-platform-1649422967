@@ -71,7 +71,7 @@ Rails.application.configure do
   # Log disallowed deprecations.
   config.active_support.disallowed_deprecation = :log
 
-  config.action_mailer.default_url_options = { host: 'https://www.erp.cklos.com', port: 443 }
+  config.action_mailer.default_url_options = { host: 'http://www.erp.cklos.com', port: 80 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
 
