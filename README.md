@@ -1,13 +1,16 @@
 # Employee Recognition Platfrom
 
-### App hosted on heorku
-https://hidden-earth-52528.herokuapp.com
+### Review app hosted on heorku
+https://employee-rec-feature-re-xob9gp.herokuapp.com/
+
+### Review app hosted on heorku
+http://www.erp.cklos.com/
 
 ### Demo credentials:
 Employee
-Email: test@test.com
+Email: test@cklos.com
 Password: testtest
 
 Admin:
-Email: admin@test.com
+Email: admin@cklos.com
 Password: adminadmin
