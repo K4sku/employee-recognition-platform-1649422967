@@ -1,14 +1,14 @@
 Employee.create!([
-  {email: "adam@test.com", password: "adamadam", password_confirmation: "adamadam", number_of_available_kudos: '10'},
-  {email: "tomasz@test.com", password: "tomasztomasz", password_confirmation: "tomasztomasz", number_of_available_kudos: '10'},
-  {email: "test@test.com", password: "testtest", password_confirmation: "testtest", number_of_available_kudos: '10'},
-  {email: "asd@test.com", password: "asdasd", password_confirmation: "asdasd", number_of_available_kudos: '10'},
-  {email: "user@test.com", password: "useruser", password_confirmation: "useruser", number_of_available_kudos: '10'}
+  {email: "adam@cklos.com", password: "adamadam", password_confirmation: "adamadam", number_of_available_kudos: '10'},
+  {email: "tomasz@cklos.com", password: "tomasztomasz", password_confirmation: "tomasztomasz", number_of_available_kudos: '10'},
+  {email: "test@cklos.com", password: "testtest", password_confirmation: "testtest", number_of_available_kudos: '10'},
+  {email: "asd@cklos.com", password: "asdasd", password_confirmation: "asdasd", number_of_available_kudos: '10'},
+  {email: "user@cklos.com", password: "useruser", password_confirmation: "useruser", number_of_available_kudos: '10'}
 ])
 
 Admin.create!([
-  {email: "admin@test.com", password: "adminadmin", password_confirmation: "adminadmin"},
-  {email: "admin2@test.com", password: "adminadmin", password_confirmation: "adminadmin"}
+  {email: "admin@cklos.com", password: "adminadmin", password_confirmation: "adminadmin"},
+  {email: "admin2@cklos.com", password: "adminadmin", password_confirmation: "adminadmin"}
   ])
 
 %w[Honesty Ownership Accountability Passion].each { |cv| CompanyValue.create!(title: cv) }
