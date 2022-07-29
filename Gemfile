@@ -5,32 +5,24 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.0'
 
-# form helpers for bulma
-gem 'bulma_form_builder'
-# Use Bulma CSS
-gem 'bulma-rails', '~> 0.9.3'
-# Use Devise as authentication solution for Rails
-gem 'devise', '~> 4.8', '>= 4.8.1'
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
-# Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1'
-# Use Puma as the app server
-gem 'puma', '~> 5.0'
-# Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.0'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'bootsnap', '>= 1.4.4', require: false
+# Use Bulma CSS
+gem 'bulma_form_builder'
+gem 'bulma-rails', '~> 0.9.3'
+gem 'devise', '~> 4.8', '>= 4.8.1'
 # Missing dependency on Mailer gem in Ruby 3.1.0
 gem 'net-imap', require: false
 gem 'net-pop', require: false
 gem 'net-smtp', require: false
+gem 'pg', '~> 1.1'
+# Premailer inlines CSS to emails and generates text variants of HTML emails.
 gem 'premailer-rails'
+gem 'puma', '~> 5.0'
+gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem 'sass-rails', '>= 6'
+gem 'webpacker', '~> 5.0'
 
 group :development, :test do
-  # Debugging tool
   gem 'pry-rails'
   gem 'rubocop', '1.25.1'
   gem 'rubocop-rails', '2.13.2'
@@ -45,15 +37,11 @@ group :development, :test do
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 4.1.0'
-  # Display performance information such as SQL time and flame graphs for each request in your browser.
-  # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
+  gem 'letter_opener'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'letter_opener'
   gem 'spring'
+  gem 'web-console', '>= 4.1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
