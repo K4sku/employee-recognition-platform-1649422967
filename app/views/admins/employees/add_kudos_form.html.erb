@@ -1,0 +1,17 @@
+<div class='container is-max-widescreen'>
+  <div class='box'>
+  <p class='is-size-3'>Adding avalible kudos to <strong>all employees</strong></p>
+    <div class="field">
+      <%= bulma_form_with do |form| %>
+
+        <div class="field">
+          <%= form.number_field :number_of_available_kudos_to_add, in: 1..20, step: 1 %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Add kudos", class: "button is-primary" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
