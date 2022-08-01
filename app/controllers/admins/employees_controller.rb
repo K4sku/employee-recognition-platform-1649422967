@@ -1,7 +1,7 @@
 module Admins
   class EmployeesController < BaseController
     def index
-      @employees = Employee.all.order('id ASC')
+      employees
     end
 
     def show
@@ -27,7 +27,19 @@ module Admins
       redirect_back fallback_location: kudos_path
     end
 
+    def render_add_kudos_form
+      render 'add_kudos_form'
+    end
+
+    def add_kudos
+      # TODO: add method
+    end
+
     private
+
+    def employees
+      @employees ||= Employee.all.order('id ASC')
+    end
 
     def employee
       @employee ||= Employee.find(params[:id])
