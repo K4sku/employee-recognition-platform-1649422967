@@ -6,6 +6,7 @@ module Admins
 
     def deliver
       order.delivered!
+      OrderMailer.with(order: order).order_delivered_email.deliver_later
       redirect_back fallback_location: admins_orders_path
     end
 

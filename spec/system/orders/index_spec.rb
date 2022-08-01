@@ -13,6 +13,7 @@ describe 'Employee can list bought rewards', type: :system, js: true do
   let!(:employee) { create(:employee) }
   let(:reward) { create(:reward) }
   let(:expensive_reward) { create(:reward, price: 10) }
+  let(:order) { build(:order) }
 
   context 'when employee goes to order list' do
     it 'show all employees orders and highlights all' do
@@ -21,7 +22,7 @@ describe 'Employee can list bought rewards', type: :system, js: true do
       expect(page).to have_content(reward.title, count: 3)
       expect(page).to have_content(reward.description, count: 3)
       expect(page).to have_content("Price: #{reward.price}", count: 3)
-      expect(page).to have_content(reward.created_at.strftime('%F'), count: 3)
+      expect(page).to have_content(order.created_at.strftime('%F'), count: 3)
       expect(page).to have_content('Status: delivered', count: 1)
       expect(page).to have_content('Status: placed', count: 2)
       expect(page.find_link('all').ancestor('li')[:class]).to eq('is-active')

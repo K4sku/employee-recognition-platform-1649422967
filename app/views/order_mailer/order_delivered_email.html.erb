@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+  </head>
+  <body>
+    <p class="has-text-weight-semibold">
+      Dear Employee,
+    </p>
+    <p class="has-text-weight-medium mt-3">
+      Your order of <%= @order.reward.title %> has been delivered!
+    </p>
+    <p class="has-text-weight-normal mt-1">
+      Description: <%= @order.reward.description %>
+    </p>
+    <p class="has-text-weight-normal mt-2">
+      Price: <%= @order.purchase_price %>,
+      ordered on: <%= @order.created_at.strftime("%F") %>
+    </p>
+    <p class="mt-3">
+      Thank you for being awesome!<br>
+      Kindly, ERP Team
+    </p>
+  </body>
+</html>

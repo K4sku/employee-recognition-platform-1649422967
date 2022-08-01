@@ -71,6 +71,10 @@ Rails.application.configure do
   # Log disallowed deprecations.
   config.active_support.disallowed_deprecation = :log
 
+  config.action_mailer.default_url_options = { host: 'http://www.erp.cklos.com', port: 80 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
 
@@ -111,3 +115,13 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 end
+
+ActionMailer::Base.smtp_settings = {
+  domain:         'cklos.com',
+  address:        "smtp.sendgrid.net",
+  port:            587,
+  authentication: :plain,
+  user_name:      'apikey',
+  enable_starttls_auto: true,
+  password:       Rails.application.credentials.sendgrid[:api_key]
+}

@@ -10,7 +10,7 @@ describe 'Admin can deliver placed orders', type: :system do
   let!(:admin) { create(:admin) }
   let!(:employee) { create(:employee) }
   let(:reward) { create(:reward) }
-  let(:order) { create(:order) }
+  let(:order) { build(:order) }
 
   context 'when admin goes to orders list' do
     it 'show all orders' do
@@ -20,7 +20,7 @@ describe 'Admin can deliver placed orders', type: :system do
       expect(page).to have_content(reward.title, count: 2)
       expect(page).to have_content(reward.description, count: 2)
       expect(page).to have_content("Price: #{reward.price}", count: 2)
-      expect(page).to have_content(reward.created_at.strftime('%F'), count: 2)
+      expect(page).to have_content(order.created_at.strftime('%F'), count: 2)
       expect(page).to have_link('Deliver', count: 2, exact: true)
     end
   end

@@ -21,7 +21,7 @@ describe 'admins see employees rewards', type: :system, js: true do
       expect(page).to have_content(order.reward.title)
       expect(page).to have_content(order.reward.description)
       expect(page).to have_content("Price: #{order.purchase_price}")
-      expect(page).to have_content(order.reward.created_at.strftime('%F'))
+      expect(page).to have_content(order.created_at.strftime('%F'))
     end
   end
 end
