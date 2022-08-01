@@ -24,6 +24,7 @@ describe 'Admin can see dedicated navbar panel', type: :system do
       admin_panel = page.find("div[test_id='admin_panel']").find('.navbar-dropdown')
       expect(admin_panel).to have_link('Dashboard')
       expect(admin_panel).to have_link('Kudos')
+      expect(admin_panel).to have_link('Add Kudos')
       expect(admin_panel).to have_link('Employees')
       expect(admin_panel).to have_link('Company Values')
       expect(admin_panel).to have_link('Rewards')
