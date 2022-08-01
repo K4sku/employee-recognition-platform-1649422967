@@ -22,7 +22,7 @@
           <%= style_avaible_kudos(current_employee.number_of_available_kudos) %>
         </div>
         <div class=navbar-item">
-          <span class="tag is-large"> 
+          <span class="tag is-large">
             Points: <%= current_employee.points %>
           </span>
         </div>
@@ -41,22 +41,9 @@
         </div>
       </div>
       <% if admin_signed_in? %>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Admin panel
-          </a>
-          <div class="navbar-dropdown is-right">
-            <%= link_to 'Dashboard', admins_pages_dashboard_path, class: 'navbar-item' %>
-            <%= link_to 'Kudos', admins_kudos_path, class: 'navbar-item' %>
-            <%= link_to 'Employees', admins_employees_path, class: 'navbar-item' %>
-            <%= link_to 'Company Values', admins_company_values_path, class: 'navbar-item' %>
-            <%= link_to 'Rewards', admins_rewards_path, class: 'navbar-item' %>
-            <%= link_to "Orders ( #{undelivered_orders_count} )", admins_orders_path, class: 'navbar-item' %>
-            <hr class="navbar-divider">
-            <%= display_curent_users_email_on_test_or_development(current_admin) %>
-            <%= link_to 'Sign out Admin', destroy_admin_session_path, method: :delete, class: 'navbar-item' %>
-          <% end %>
-        </div>
-      </div>
+        <%= render "layouts/admin_panel" %>
+      <% end %>
     </div>
-  </nav>
+  </div>
+</div>
+</nav>
