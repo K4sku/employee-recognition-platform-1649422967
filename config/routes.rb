@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get 'pages/dashboard', to: 'pages#dashboard'
     resources :kudos, only: %i[index destroy]
     resources :employees, only: %i[index show edit update destroy] do
-      get 'add_kudos', on: :collection, to: 'employees#render_add_kudos_form'
+      get 'add_kudos', on: :collection, to: 'employees#add_kudos_form'
       post 'add_kudos', on: :collection
     end
     resources :company_values

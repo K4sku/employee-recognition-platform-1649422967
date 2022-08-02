@@ -27,7 +27,7 @@ module Admins
       redirect_back fallback_location: kudos_path
     end
 
-    def render_add_kudos_form
+    def add_kudos_form
       render 'add_kudos_form'
     end
 
