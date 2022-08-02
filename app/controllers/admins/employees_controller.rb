@@ -32,13 +32,19 @@ module Admins
     end
 
     def add_kudos
-      Employee.add_kudos_to_all(permit_add_kudos[:number_of_available_kudos_to_add].to_i)
+      kudos_number = permit_add_kudos[:number_of_available_kudos_to_add].to_i
+      unless kudos_number.between?(1, 20)
+        flash[:alert] = 'Number of additional kudos must be in range 1 to 20.'
+        render 'add_kudos_form'
+        return
+      end
+      Employee.add_kudos_to_all(kudos_number)
     rescue ActiveRecord::RecordInvalid => e
       flash[:alert] = e
       render 'add_kudos_form'
     else
       redirect_to admins_employees_path,
-                  notice: "All employees recieved #{permit_add_kudos[:number_of_available_kudos_to_add]} available kudos."
+                  notice: "All employees recieved #{kudos_number} available kudos."
     end
 
     private
