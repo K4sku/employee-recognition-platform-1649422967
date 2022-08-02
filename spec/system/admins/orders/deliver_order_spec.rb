@@ -15,7 +15,6 @@ describe 'Admin can deliver placed orders', type: :system do
   context 'when admin goes to orders list' do
     it 'show all orders' do
       visit admins_orders_path
-      expect(page).to have_selector('a', text: 'Orders ( 2 )', visible: :all)
       expect(page).to have_selector(:css, "div[test_id^='order_']", count: 2)
       expect(page).to have_content(reward.title, count: 2)
       expect(page).to have_content(reward.description, count: 2)
@@ -26,12 +25,11 @@ describe 'Admin can deliver placed orders', type: :system do
   end
 
   context 'when admin delivers order' do
-    it 'decreases undelivered orders count, marks and sort delivered' do
+    it 'marks delivered and sort by order_status' do
       visit admins_orders_path
       first_deliver_link = page.first(:link, text: 'Deliver')
       click_link 'Deliver', match: :first
       expect(first_deliver_link).not_to be(page.first(:link, text: 'Deliver'))
-      expect(page).to have_selector('a', text: 'Orders ( 1 )', visible: :all)
       expect(page).to have_link('Deliver', count: 1, exact: true)
       expect(page).to have_link('Delivered', count: 1, exact: true)
     end
