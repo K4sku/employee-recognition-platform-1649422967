@@ -5,7 +5,7 @@ class Employee < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :number_of_available_kudos,
-            numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 10 }
+            numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   has_many :given_kudos, class_name: 'Kudo', foreign_key: 'giver_id', inverse_of: 'giver', dependent: :destroy
   has_many :received_kudos, class_name: 'Kudo', foreign_key: 'reciever_id', inverse_of: 'reciever', dependent: :destroy
