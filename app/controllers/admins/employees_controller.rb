@@ -32,13 +32,13 @@ module Admins
     end
 
     def add_kudos
-      Employee.add_kudos_to_all(params[:number_of_available_kudos_to_add].to_i)
+      Employee.add_kudos_to_all(permit_add_kudos[:number_of_available_kudos_to_add].to_i)
     rescue ActiveRecord::RecordInvalid => e
       flash[:alert] = e
       render 'add_kudos_form'
     else
       redirect_to admins_employees_path,
-                  notice: "All employees recieved #{params[:number_of_available_kudos_to_add]} available kudos."
+                  notice: "All employees recieved #{permit_add_kudos[:number_of_available_kudos_to_add]} available kudos."
     end
 
     private
@@ -54,6 +54,10 @@ module Admins
     # Only allow a list of trusted parameters through.
     def employee_params
       params.require(:employee).permit(:email, :password, :password_confirmation, :number_of_available_kudos)
+    end
+
+    def permit_add_kudos
+      params.permit(:authenticity_token, :number_of_available_kudos_to_add, :commit)
     end
 
     def remove_password_from_hash_if_empty
