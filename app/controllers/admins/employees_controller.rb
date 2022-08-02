@@ -32,7 +32,13 @@ module Admins
     end
 
     def add_kudos
-      # TODO: add method
+      Employee.add_kudos_to_all(params[:number_of_available_kudos_to_add].to_i)
+    rescue ActiveRecord::RecordInvalid => e
+      flash[:alert] = e
+      render 'add_kudos_form'
+    else
+      redirect_to admins_employees_path,
+                  notice: "All employees recieved #{params[:number_of_available_kudos_to_add]} available kudos."
     end
 
     private
