@@ -27,6 +27,31 @@ module Admins
       redirect_back fallback_location: kudos_path
     end
 
+    def add_kudos_form
+      render 'add_kudos_form'
+    end
+
+    def add_kudos
+      kudos_number = add_kudos_params[:number_of_available_kudos_to_add].to_i
+      unless kudos_number.between?(1, 20)
+        flash[:alert] = 'Number of additional kudos must be in range 1 to 20.'
+        render 'add_kudos_form'
+        return
+      end
+
+      Employee.transaction do
+        Employee.find_each do |employee|
+          employee.update!(number_of_available_kudos: employee.number_of_available_kudos + kudos_number)
+        end
+      end
+    rescue ActiveRecord::RecordInvalid
+      flash[:alert] = 'Updating employees kudos failed'
+      render 'add_kudos_form'
+    else
+      redirect_to admins_employees_path,
+                  notice: "All employees recieved #{kudos_number} available kudos."
+    end
+
     private
 
     def employee
@@ -36,6 +61,10 @@ module Admins
     # Only allow a list of trusted parameters through.
     def employee_params
       params.require(:employee).permit(:email, :password, :password_confirmation, :number_of_available_kudos)
+    end
+
+    def add_kudos_params
+      params.permit(:authenticity_token, :number_of_available_kudos_to_add, :commit)
     end
 
     def remove_password_from_hash_if_empty
