@@ -44,8 +44,8 @@ module Admins
           employee.update!(number_of_available_kudos: employee.number_of_available_kudos + kudos_number)
         end
       end
-    rescue ActiveRecord::RecordInvalid => e
-      flash[:alert] = e
+    rescue ActiveRecord::RecordInvalid
+      flash[:alert] = 'Updating employees kudos failed'
       render 'add_kudos_form'
     else
       redirect_to admins_employees_path,
