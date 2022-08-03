@@ -1,7 +1,7 @@
 module Admins
   class EmployeesController < BaseController
     def index
-      employees
+      @employees = Employee.all.order('id ASC')
     end
 
     def show
@@ -48,10 +48,6 @@ module Admins
     end
 
     private
-
-    def employees
-      @employees ||= Employee.all.order('id ASC')
-    end
 
     def employee
       @employee ||= Employee.find(params[:id])
