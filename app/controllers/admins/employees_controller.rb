@@ -32,7 +32,7 @@ module Admins
     end
 
     def add_kudos
-      kudos_number = permit_add_kudos[:number_of_available_kudos_to_add].to_i
+      kudos_number = add_kudos_params[:number_of_available_kudos_to_add].to_i
       unless kudos_number.between?(1, 20)
         flash[:alert] = 'Number of additional kudos must be in range 1 to 20.'
         render 'add_kudos_form'
@@ -62,7 +62,7 @@ module Admins
       params.require(:employee).permit(:email, :password, :password_confirmation, :number_of_available_kudos)
     end
 
-    def permit_add_kudos
+    def add_kudos_params
       params.permit(:authenticity_token, :number_of_available_kudos_to_add, :commit)
     end
 
