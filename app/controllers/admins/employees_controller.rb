@@ -38,7 +38,12 @@ module Admins
         render 'add_kudos_form'
         return
       end
-      Employee.add_kudos_to_all(kudos_number)
+
+      Employee.transaction do
+        Employee.find_each do |employee|
+          employee.update!(number_of_available_kudos: employee.number_of_available_kudos + kudos_number)
+        end
+      end
     rescue ActiveRecord::RecordInvalid => e
       flash[:alert] = e
       render 'add_kudos_form'

@@ -15,12 +15,4 @@ class Employee < ApplicationRecord
   def points
     received_kudos.count - orders.sum(:purchase_price)
   end
-
-  def self.add_kudos_to_all(kudos_count)
-    transaction do
-      find_each do |employee|
-        employee.update!(number_of_available_kudos: employee.number_of_available_kudos + kudos_count)
-      end
-    end
-  end
 end
