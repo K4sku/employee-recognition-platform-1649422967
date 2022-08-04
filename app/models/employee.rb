@@ -4,6 +4,10 @@ class Employee < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
+
   validates :number_of_available_kudos,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
