@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :kudos, only: %i[index destroy]
     resources :employees, only: %i[index show edit update destroy] do
       get 'add_kudos', on: :collection, to: 'employees#add_kudos_form'
-      post 'add_kudos', on: :collection
+      patch 'add_kudos', on: :collection
     end
     resources :company_values
     resources :rewards
