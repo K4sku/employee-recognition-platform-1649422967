@@ -13,7 +13,7 @@ class KudosController < EmployeeBaseController
 
   def edit
     @kudo = find_kudo
-    authorize!
+    authorize @kudo
   end
 
   def create
@@ -34,7 +34,7 @@ class KudosController < EmployeeBaseController
 
   def update
     @kudo = find_kudo
-    authorize!
+    authorize @kudo
     if @kudo.update(kudo_params)
       redirect_to @kudo, notice: 'Kudo was successfully updated.'
     else
@@ -44,7 +44,7 @@ class KudosController < EmployeeBaseController
 
   def destroy
     @kudo = find_kudo
-    authorize!
+    authorize @kudo
     @kudo.destroy
     flash[:notice] = 'Kudo was successfully destroyed.'
     redirect_back fallback_location: kudos_path
@@ -59,9 +59,5 @@ class KudosController < EmployeeBaseController
   # Only allow a list of trusted parameters through.
   def kudo_params
     params.require(:kudo).permit(:title, :content, :giver_id, :reciever_id, :company_value_id)
-  end
-
-  def authorize!
-    raise AuthorizationError unless @kudo.giver == current_employee
   end
 end
