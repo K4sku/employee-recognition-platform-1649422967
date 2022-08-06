@@ -31,9 +31,9 @@
 
           <div class="list-item-controls">
             <div class="buttons is-right">
-              <% if employee_signed_in? && (kudo.giver == current_employee) %>
-                <%= link_to 'Delete', kudo, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger is-light is-outlined" %>
-                <%= link_to 'Edit', edit_kudo_path(kudo), class: 'button' %>
+              <% if policy(kudo).giver? %>
+                <%= link_to 'Delete', kudo, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger is-light is-outlined", :disabled => !policy(kudo).destroy? %>
+                <%= link_to 'Edit', edit_kudo_path(kudo), class: 'button', :disabled => !policy(kudo).edit? %>
               <% else %>
                 <button class="button is-danger is-light is-outlined is-invisible">
                   <span>Destroy</span>

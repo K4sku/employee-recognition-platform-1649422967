@@ -25,8 +25,8 @@
       <%= @kudo.reciever.email %>
     </p>
     <div class='mt-3'>
-      <% if employee_signed_in? && (@kudo.giver == current_employee) %>
-        <%= link_to 'Edit', edit_kudo_path(@kudo), class: 'button' %>
+      <% if policy(@kudo).giver? %>
+        <%= link_to 'Edit', edit_kudo_path(@kudo), class: 'button', :disabled => !policy(@kudo).edit? %>
       <% end %>
       <%= link_to 'Back', kudos_path, class: 'button' %>
     </div>
