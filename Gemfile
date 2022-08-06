@@ -18,6 +18,7 @@ gem 'pg', '~> 1.1'
 # Premailer inlines CSS to emails and generates text variants of HTML emails.
 gem 'premailer-rails'
 gem 'puma', '~> 5.0'
+gem 'pundit', '~> 2.2'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
@@ -46,5 +47,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-gem "pundit", "~> 2.2"
