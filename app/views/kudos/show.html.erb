@@ -27,6 +27,7 @@
     <div class='mt-3'>
       <% if policy(@kudo).giver? %>
         <%= link_to 'Edit', edit_kudo_path(@kudo), class: 'button', :disabled => !policy(@kudo).edit? %>
+        <%= link_to 'Delete', @kudo, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger is-light is-outlined', :disabled => !policy(@kudo).destroy? %>
       <% end %>
       <%= link_to 'Back', kudos_path, class: 'button' %>
     </div>
