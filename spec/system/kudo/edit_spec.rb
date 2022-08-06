@@ -9,8 +9,8 @@ describe 'Kudo.edit', type: :system, js: true do
   let(:kudo) { create(:kudo) }
 
   context 'when logged in' do
-    context 'when pressing New Kudo link' do
-      it 'shows new kudo form' do
+    context 'when pressing Edit Kudo link' do
+      it 'shows Edit kudo form' do
         logged_employee = create(:employee)
         sign_in logged_employee
         owned_kudo = create(:kudo, giver: logged_employee)
