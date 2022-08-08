@@ -16,7 +16,6 @@ describe KudoPolicy do
   permissions :update?, :edit?, :destroy? do
     it 'grants access if less then 5 minutes elapsed since kudo\'s creation' do
       kudo = create(:kudo, giver: employee)
-      puts kudo.inspect
       travel 3.minutes
       expect(described_class).to permit(employee, kudo)
     end
