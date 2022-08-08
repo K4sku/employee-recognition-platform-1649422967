@@ -18,6 +18,6 @@ class KudoPolicy < ApplicationPolicy
   private
 
   def less_then_5_minutes_past_creation?
-    (Time.current - @record.created_at).floor < 60 * 5
+    @record.created_at > 5.minutes.ago
   end
 end
