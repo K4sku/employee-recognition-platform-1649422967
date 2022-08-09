@@ -1,17 +1,29 @@
-<div class='container is-fluid'>
+<div class='container'>
   <nav class="level is-mobile">
     <div class="level-left">
       <p class='is-size-3'><strong>Rewards</strong></p>
     </div>
   </nav>
-  <div class="is-flex is-flex-wrap-wrap">
+  <div class="columns is-multiline" style="@include constant-height-card">
     <% @rewards.each do |reward| %>
-      <div class="box m-3 p-5 is-4" test_id="reward_<%=reward.id%>">
-        <article class="is-child">
-          <p class="title"><%= reward.title %></p>
-          <p class="subtitle">Price: <%= reward.price %></p>
-          <%= link_to 'Show details', reward, class: 'button' %>
-        </article>
+      <div class="column is-one-quarter">
+        <div class="card constant-height-card" test_id="reward_<%=reward.id%>">
+          <div class="card-content constant-height-card">
+            <p class="title">
+              <%= reward.title %>
+            </p>
+            <p class="subtitle">
+              Price: <%= reward.price %>
+            </p>
+          </div>
+          <footer class="card-footer">
+            <p class="card-footer-item">
+              <span>
+                <%= link_to 'Show details', reward, class: 'button' %>
+              </span>
+            </p>
+          </footer>
+        </div>
       </div>
     <% end %>
   </div>
