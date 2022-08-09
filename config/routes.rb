@@ -3,9 +3,13 @@
 Rails.application.routes.draw do
   devise_for :admins, path: 'admins', controllers: { sessions: 'admins/sessions' }, path_names: { sign_in: "" }
   devise_for :employees
+
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
+  end
   
   resources :kudos
-  resources :rewards, only: %i[index show]
+  resources :rewards, only: %i[index show], concerns: :paginatable
   resources :orders, only: %i[index create]
   root to: 'kudos#index'
   
