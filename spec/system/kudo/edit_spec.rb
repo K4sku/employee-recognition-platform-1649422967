@@ -44,7 +44,8 @@ describe 'Kudo.edit', type: :system, js: true do
         logged_employee = create(:employee)
         sign_in logged_employee
         owned_kudo = create(:kudo, giver: logged_employee)
-        visit edit_kudo_path(owned_kudo)
+        visit root_path
+        click_on 'Edit'
         fill_in 'kudo_title', with: 'Lorem ipsum dolor sit amet'
         fill_in 'kudo_content', with: 'consectetur adipiscing elit. Sed dignissim dignissim urna vel ultrices.'
         last_option_reciever = page.find_field('Reciever').all('option').last.text
