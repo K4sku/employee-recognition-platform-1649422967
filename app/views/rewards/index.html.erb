@@ -7,7 +7,7 @@
   <div class="columns is-multiline" style="@include constant-height-card">
     <% @rewards.each do |reward| %>
       <div class="column is-one-quarter">
-        <div class="card constant-height-card test_id="reward_<%=reward.id%>"">
+        <div class="card constant-height-card" test_id="reward_<%=reward.id%>">
           <div class="card-content constant-height-card">
             <p class="title">
               <%= reward.title %>
