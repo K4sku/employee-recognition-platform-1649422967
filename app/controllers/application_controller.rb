@@ -1,11 +1,19 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  rescue_from 'AuthorizationError', with: :deny_access
+  include Pundit::Authorization
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
 
-  def deny_access
-    redirect_to root_path, flash: { alert: 'Only givers can modify kudos' }
+  def user_not_authorized
+    flash[:alert] = 'You can not perform this action.'
+    can_be_infinite_redirect = request.url == request.referer
+    if can_be_infinite_redirect
+      redirect_to root_path
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 end
