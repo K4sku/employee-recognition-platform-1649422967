@@ -4,9 +4,9 @@
       <p class='is-size-3'><strong>Rewards</strong></p>
     </div>
   </nav>
-  <div class="columns is-multiline" style="@include constant-height-card">
+  <div class="columns">
     <% @rewards.each do |reward| %>
-      <div class="column is-one-quarter">
+      <div class="column is-one-third">
         <div class="card constant-height-card" test_id="reward_<%=reward.id%>">
           <div class="card-content constant-height-card">
             <p class="title">
@@ -27,4 +27,8 @@
       </div>
     <% end %>
   </div>
+<%= paginate @rewards %>
 </div>
+<% content_for :head do %>
+  <%= rel_next_prev_link_tags @rewards %>
+<% end %>

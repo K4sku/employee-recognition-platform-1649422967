@@ -1,6 +1,6 @@
 class RewardsController < EmployeeBaseController
   def index
-    @rewards = Reward.all
+    @rewards = Reward.page(params[:page])
   end
 
   def show
