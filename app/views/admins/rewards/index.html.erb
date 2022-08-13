@@ -16,6 +16,11 @@
             <div class="list-item-description">
               <p class="has-text-weight-semibold">Price: <%= reward.price %></p>
               <p><%= reward.description %></p>
+              <div>
+                <% reward.categories.each do |category| %>
+                  <span class='tag'> <%= category.title %></span>
+                <% end %>
+              </div>
             </div>
           </div>
 
