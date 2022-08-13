@@ -14,6 +14,7 @@ module Admins
 
     def edit
       @reward = find_reward
+      @possible_categories = Category.all - @reward.categories
     end
 
     def create
@@ -43,11 +44,11 @@ module Admins
     private
 
     def find_reward
-      Reward.find(params[:id])
+      Reward.includes(:categories).find(params[:id])
     end
 
     def reward_params
-      params.require(:reward).permit(:title, :description, :price)
+      params.require(:reward).permit(:title, :description, :price, category_ids: [])
     end
   end
 end
