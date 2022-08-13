@@ -1,0 +1,7 @@
+<%= bulma_form_with(model: [:admins, category]) do |form| %>
+  <%= form.text_field :title, autofocus: true %>
+
+  <div class="actions">
+    <%= form.submit "Save Categotry", class: "button is-primary" %>
+  </div>
+<% end %>

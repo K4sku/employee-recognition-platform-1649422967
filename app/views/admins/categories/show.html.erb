@@ -1,0 +1,17 @@
+<div class='section'>
+  <div class='box'>
+    <p>
+      Category:<strong> <%= @category.title %></strong>
+    </p>
+    <p class="mt-2">Rewards with category: <%= @category.rewards.count %></p>
+    <% @category.rewards.each do |reward| %>
+      <p>- <%= link_to reward.title, admins_reward_path(reward) %></p>
+    <% end %>
+    <p class="mt-2">Total: <%= @category.rewards.count %></p>
+
+    <div class='mt-3'>
+      <%= link_to 'Edit', edit_admins_category_path(@category), class: 'button' %>
+      <%= link_to 'Back', admins_categories_path, class: 'button' %>
+    </div>
+  </div>
+</div>
