@@ -5,6 +5,7 @@
 global.bulmaToast = require("bulma-toast")
 import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
+import BulmaTagsInput from '@creativebulma/bulma-tagsinput';
 
 Rails.start()
 ActiveStorage.start()
@@ -16,3 +17,4 @@ bulmaToast.setDefaults({
   position: 'top-center',
   closeOnClick: false,
 })
+BulmaTagsInput.attach();
