@@ -33,9 +33,11 @@ ActiveRecord::Schema.define(version: 2022_08_13_065131) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "categories_rewards", id: false, force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.bigint "reward_id", null: false
+  create_table "category_rewards", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "reward_id"
+    t.index ["category_id"], name: "index_category_rewards_on_category_id"
+    t.index ["reward_id"], name: "index_category_rewards_on_reward_id"
   end
 
   create_table "company_values", force: :cascade do |t|
