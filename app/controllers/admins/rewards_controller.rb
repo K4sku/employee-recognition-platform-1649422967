@@ -10,6 +10,7 @@ module Admins
 
     def new
       @reward = Reward.new
+      @possible_categories = Category.all
     end
 
     def edit
@@ -22,6 +23,7 @@ module Admins
       if @reward.save
         redirect_to admins_rewards_path, notice: 'Reward was successfully created.'
       else
+        @possible_categories = Category.all - @reward.categories
         render :new
       end
     end
@@ -31,6 +33,7 @@ module Admins
       if @reward.update(reward_params)
         redirect_to admins_reward_path(@reward), notice: 'Reward was successfully updated.'
       else
+        @possible_categories = Category.all - @reward.categories
         render :edit
       end
     end
