@@ -6,9 +6,9 @@
 
 
   <div class="field">
-    <%= form.label :category_id, class: 'label' %>
+    <%= form.label :category_ids, "Categories", class: 'label' %>
     <div class="control">
-      <select id="reward_category_ids" name ="reward[category_ids][]" multiple data-type="tags" data-placeholder="Choose Tags">
+      <select id="reward_category_ids" name ="reward[category_ids][]" multiple data-type="tags" data-placeholder="Choose Categories" test_id='category_input'>
         <%= @reward.categories.each do |category| %>
           <option value="<%= category.id %>" selected><%= category.title %></option>
         <% end %>
