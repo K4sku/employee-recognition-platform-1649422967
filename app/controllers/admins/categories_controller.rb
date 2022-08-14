@@ -19,7 +19,7 @@ module Admins
     def create
       @category = Category.new(category_params)
       if @category.save
-        redirect_to admins_category_path(@category), notice: "Category #{category.title} was successfully created."
+        redirect_to admins_categories_path, notice: "Category #{category.title} was successfully created."
       else
         render :new
       end
