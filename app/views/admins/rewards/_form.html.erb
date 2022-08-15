@@ -4,7 +4,7 @@
   <%= form.text_field :description %>
   <%= form.number_field :price, min: 1, step: 1 %>
 
-
+  <input name="reward[category_ids][]" type="hidden" value>
   <div class="field">
     <%= form.label :category_ids, "Categories", class: 'label' %>
     <div class="control">
