@@ -1,5 +1,5 @@
 class Reward < ApplicationRecord
-  has_many :category_rewards, dependent: :restrict_with_exception
+  has_many :category_rewards, dependent: :destroy
   has_many :categories, through: :category_rewards
 
   validates :title, :description, :price, presence: true
