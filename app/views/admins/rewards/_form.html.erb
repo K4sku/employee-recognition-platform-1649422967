@@ -16,6 +16,13 @@
           <option value="<%= possible_category.id %>"><%= possible_category.title %></option>
         <% end %>
       </select>
+      <% if reward.errors.group_by_attribute.include?(:categories) %>
+        <div class='help is-danger'>
+          <% reward.errors.full_messages_for(:categories).each do |message| %>
+            <%= message %><br>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 
