@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2022_08_14_094429) do
   create_table "category_rewards", force: :cascade do |t|
     t.bigint "category_id", null: false
     t.bigint "reward_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id", "reward_id"], name: "index_category_rewards_on_category_id_and_reward_id", unique: true
     t.index ["category_id"], name: "index_category_rewards_on_category_id"
     t.index ["reward_id"], name: "index_category_rewards_on_reward_id"
