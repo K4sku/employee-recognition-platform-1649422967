@@ -35,13 +35,9 @@ module Admins
     end
 
     def destroy
-      if category.rewards.any?
-        flash[:alert] = 'Categoty can not be deleted. There are rewards in this category.'
-        redirect_back fallback_location: admins_categories_path
-      else
-        @category.destroy
-        redirect_to admins_categories_path, notice: "Categoty #{@category.title} was deleted."
-      end
+      authorize category
+      category.destroy
+      redirect_to admins_categories_path, notice: "Categoty #{@category.title} was deleted."
     end
 
     private
