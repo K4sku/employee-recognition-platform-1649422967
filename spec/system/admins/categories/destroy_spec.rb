@@ -41,7 +41,7 @@ describe 'admins destroy Category', type: :system, js: true do
       end
       expect(page).to have_current_path admins_categories_path
       expect(page).to have_selector(:css, category_with_rewards_element)
-      expect(page).to have_content 'Categoty can not be deleted. There are rewards in this category.'
+      expect(page).to have_content 'You can not perform this action.'
     end
   end
 end
