@@ -9,6 +9,6 @@ FactoryBot.define do
     "CValue#{n}"
   end
   sequence :category_title do |n|
-    "CValue#{n}"
+    "Category#{n}"
   end
 end
