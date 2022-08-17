@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :order do
-    association :employee, :with_point
+    association :employee
     reward factory: :reward, price: 1
     purchase_price { 1 }
     status { :placed }
