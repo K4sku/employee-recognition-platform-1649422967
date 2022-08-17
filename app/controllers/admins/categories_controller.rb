@@ -2,6 +2,7 @@ module Admins
   class CategoriesController < BaseController
     def index
       @categories = Category.all
+      @rewards_count = @categories.joins(:rewards).group('category_rewards.category_id').count.to_h
     end
 
     def show

@@ -13,7 +13,7 @@
         <div class="list-item" test_id="category_<%= category.id %>">
           <div class="list-item-content">
             <div class="list-item-title"><%= category.title %></div>
-            <p>Rewards with category: <%= category.rewards.count %></p>
+            <p>Rewards with category: <%= @rewards_count[category.id] || '0' %></p>
           </div>
 
           <div class="list-item-controls">
