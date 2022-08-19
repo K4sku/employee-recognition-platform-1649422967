@@ -16,6 +16,6 @@ class RewardsController < EmployeeBaseController
   private
 
   def reward_params
-    params.permit(:category)
+    params.permit(:category, :page)
   end
 end

@@ -9,9 +9,9 @@ class FilterLinksPresenter
     link_selected = link_selected?(request.params, filter_argument)
     @view.content_tag :li, class: active_class(link_selected) do
       if link_selected
-        @view.link_to filter_argument, request.parameters[:controller]
+        @view.link_to filter_argument, controller: request.parameters[:controller], action: 'index'
       else
-        @view.link_to filter_argument, "#{request.parameters[:controller]}?#{@filter_key}=#{filter_argument}"
+        @view.link_to filter_argument, controller: request.parameters[:controller], action: 'index', @filter_key => filter_argument
       end
     end
   end
