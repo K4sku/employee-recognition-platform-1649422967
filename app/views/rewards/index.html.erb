@@ -3,6 +3,14 @@
     <div class="level-left">
       <p class='is-size-3'><strong>Rewards</strong></p>
     </div>
+    <div class="tabs is-centered">
+      <ul>
+      <% presenter = FilterLinksPresenter.new(self, filter_key: "category") %>
+        <% @categories.each do |category| %>
+          <%= presenter.styled_link_to_filter_query(request, category) %>
+        <% end %>
+      </ul>
+    </div>
   </nav>
   <div class="columns">
     <% @rewards.each do |reward| %>
