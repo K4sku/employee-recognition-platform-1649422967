@@ -1,7 +1,9 @@
 class RewardsController < EmployeeBaseController
   def index
     @rewards = if reward_params.key?('category')
-                 Reward.includes(:categories).where("categories.title = '#{reward_params[:category]}'").references(:categories)
+                 Reward.includes(:categories)
+                       .where("categories.title = '#{reward_params[:category]}'")
+                       .references(:categories)
                else
                  Reward.all.includes(:categories)
                end

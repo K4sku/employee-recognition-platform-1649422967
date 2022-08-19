@@ -11,7 +11,8 @@ class FilterLinksPresenter
       if link_selected
         @view.link_to filter_argument, controller: request.parameters[:controller], action: 'index'
       else
-        @view.link_to filter_argument, controller: request.parameters[:controller], action: 'index', @filter_key => filter_argument
+        @view.link_to filter_argument, controller: request.parameters[:controller], action: 'index',
+                                       @filter_key => filter_argument
       end
     end
   end
