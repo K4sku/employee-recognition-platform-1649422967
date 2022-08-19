@@ -3,7 +3,7 @@ class RewardsController < EmployeeBaseController
     @rewards = if reward_params.key?('category')
                  Reward.includes(:categories).where("categories.title = '#{reward_params[:category]}'").references(:categories)
                else
-                 Reward.all
+                 Reward.all.includes(:categories)
                end
     @rewards = @rewards.page(params[:page])
     @categories = Category.pluck(:title)
