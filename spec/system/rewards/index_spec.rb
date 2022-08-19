@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Rewards index display paginated rewards', type: :system, js: true do
+describe 'Rewards index display paginated rewards', type: :system do
   let!(:rewards) { create_list(:reward, 7) }
   let(:employee) { create(:employee) }
 

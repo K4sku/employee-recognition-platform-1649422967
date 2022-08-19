@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Rewards index display filtered rewards', type: :system, js: true do
+describe 'Rewards index display filtered rewards', type: :system do
   let!(:category_with_one_reward) { create(:category_with_rewards, rewards_count: 1) }
   let!(:category_with_nine_rewards) { create(:category_with_rewards, rewards_count: 9) }
   let(:employee) { create(:employee) }
