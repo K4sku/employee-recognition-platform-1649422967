@@ -1,16 +1,27 @@
 class FilterLinksPresenter
-  def initialize(view, filter_key)
+  def initialize(view, filter_key:, default_selected_link: '')
     @view = view
     @filter_key = filter_key
+    @default_selected_link = default_selected_link
   end
 
   def styled_link_to_filter_query(request, filter_argument)
-    @view.content_tag :li, class: conditional_active(request.params, filter_argument) do
-      @view.link_to filter_argument, "#{request.path}?#{@filter_key}=#{filter_argument}"
+    link_selected = link_selected?(request.params, filter_argument)
+    @view.content_tag :li, class: active_class(link_selected) do
+      if link_selected
+        @view.link_to filter_argument, request.path
+      else
+        @view.link_to filter_argument, "#{request.path}?#{@filter_key}=#{filter_argument}"
+      end
     end
   end
 
-  def conditional_active(request_params, filter_argument)
-    'is-active' if request_params.fetch(@filter_key, '') == filter_argument
+  def link_selected?(request_params, filter_argument)
+    request_params.fetch(@filter_key, '') == filter_argument ||
+      (filter_argument == @default_selected_link && !request_params.key?(@filter_key))
+  end
+
+  def active_class(link_selected)
+    'is-active' if link_selected
   end
 end
