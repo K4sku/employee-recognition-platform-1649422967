@@ -26,13 +26,19 @@ employees.each do |employee|
   end
 end
 
+Category.create!([
+  { title: 'junk' },
+  { title: 'treasure' },
+  { title: 'flowers' }
+])
+
 Reward.create!([
-  { title: "Bag of Wooden Nickels", description: "The Bag of Wooden Nickels was a bag of wooden coins was one of the many treasures in the treasure hold of LeChuck's ship.", price: 1 },
-  { title: "Bottomless mug", description: "The Bottomless Mug was simply a mug with no bottom.", price: 1 },
-  { title: "Brimstone Beach Club Card", description: "Brimstone Beach Club. Member Since 1632", price: 1 },
-  { title: "Cursed Diamond Ring", description: "The ring, when placed on a persons finger, would turn its wearer gold.", price: 1 },
-  { title: "Pancake Syrup", description: "Pancake Syrup was a sweet treat used as topping for puddings.", price: 1 },
-  { title: "Murray's Arm", description: "The arm wore a floatie which made it float in the water, and grasped a pirate sword.", price: 1 }
+  { title: "Bag of Wooden Nickels", description: "The Bag of Wooden Nickels was a bag of wooden coins was one of the many treasures in the treasure hold of LeChuck's ship.", price: 1, categories: Category.where(title: 'junk') },
+  { title: "Bottomless mug", description: "The Bottomless Mug was simply a mug with no bottom.", price: 1, categories: Category.where(title: 'junk') },
+  { title: "Brimstone Beach Club Card", description: "Brimstone Beach Club. Member Since 1632", price: 1, categories: Category.where(title: 'junk') },
+  { title: "Cursed Diamond Ring", description: "The ring, when placed on a persons finger, would turn its wearer gold.", price: 1, categories: Category.where(title: 'treasure') },
+  { title: "Pancake Syrup", description: "Pancake Syrup was a sweet treat used as topping for puddings.", price: 1, categories: Category.where(title: 'treasure') },
+  { title: "Murray's Arm", description: "The arm wore a floatie which made it float in the water, and grasped a pirate sword.", price: 1, categories: Category.where(title: 'junk') }
 ])
 
 rewards = Reward.all

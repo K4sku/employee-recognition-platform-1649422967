@@ -8,4 +8,7 @@ FactoryBot.define do
   sequence :company_value_title do |n|
     "CValue#{n}"
   end
+  sequence :category_title do |n|
+    "Category#{n}"
+  end
 end

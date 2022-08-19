@@ -2,6 +2,7 @@
   "name": "ruby-digital-goods-shop-template",
   "private": true,
   "dependencies": {
+    "@creativebulma/bulma-tagsinput": "^1.0.3",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",

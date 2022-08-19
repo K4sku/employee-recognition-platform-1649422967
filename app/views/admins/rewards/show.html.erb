@@ -10,10 +10,15 @@
     <p>
       <%= @reward.description %>
     </p>
+    <div>
+      <% @reward.categories.each do |category| %>
+        <span class='tag'> <%= category.title %></span>
+      <% end %>
+    </div>
 
     <div class='mt-3'>
       <%= link_to 'Edit', edit_admins_reward_path(@reward), class: 'button' %>
-      <%= link_to 'Back', admins_rewards_path, class: 'button' %>
+      <%= link_to 'Back', :back, class: 'button' %>
     </div>
   </div>
 </div>

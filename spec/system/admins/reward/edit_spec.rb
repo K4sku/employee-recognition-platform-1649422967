@@ -51,4 +51,46 @@ describe 'Reward create action', type: :system, js: true do
       expect(page).to have_content("Price can't be blank")
     end
   end
+
+  it 'can add category' do
+    category1 = create(:category)
+    category2 = create(:category)
+    visit edit_admins_reward_path(reward)
+    page.find(:css, "input[test_id='category_input']").click
+    page.find(:link, category1.title).click
+    page.find(:css, "input[test_id='category_input']").click
+    page.find(:link, category2.title).click
+    click_on 'Save Reward'
+    expect(page).to have_current_path admins_reward_path(reward)
+    expect(page).to have_content(reward.title.to_s)
+    expect(page).to have_content(reward.description.to_s)
+    expect(page).to have_content(reward.price.to_s)
+    expect(page).to have_content(reward.categories.first.title)
+    expect(page).to have_content(reward.categories.last.title)
+    expect(page).to have_content(category1.title)
+    expect(page).to have_content(category2.title)
+  end
+
+  it 'can remove category' do
+    visit edit_admins_reward_path(reward)
+    expect(page).to have_css('span.tag', count: 2)
+    page.first(:css, 'div.delete').click
+    expect(page).to have_css('span.tag', count: 1)
+    click_on 'Save Reward'
+    expect(page).to have_current_path admins_reward_path(reward)
+    expect(page).to have_content(reward.categories.last.title)
+    expect(page).to have_css('span.tag', count: 1)
+  end
+
+  it 'can not remove all categories' do
+    visit edit_admins_reward_path(reward)
+    expect(page).to have_css('span.tag', count: 2)
+    page.first(:css, 'div.delete').click
+    page.first(:css, 'div.delete').click
+    expect(page).to have_css('span.tag', count: 0)
+    click_on 'Save Reward'
+    expect(page).to have_current_path admins_reward_path(reward)
+    expect(page).to have_content("Categories can't be blank")
+    expect(page).to have_css('span.tag', count: 0)
+  end
 end

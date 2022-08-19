@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :orders, only: %i[index] do
         put 'deliver', on: :member
     end
+    resources :categories
     root to: 'pages#dashboard'
   end
 end

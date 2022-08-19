@@ -28,6 +28,7 @@ describe 'Admin can see dedicated navbar panel', type: :system do
       expect(admin_panel).to have_link('Employees')
       expect(admin_panel).to have_link('Company Values')
       expect(admin_panel).to have_link('Rewards')
+      expect(admin_panel).to have_link('Categories')
       expect(admin_panel).to have_link('Orders')
       expect(admin_panel).to have_link('Sign out Admin')
     end

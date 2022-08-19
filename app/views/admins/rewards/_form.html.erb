@@ -4,6 +4,28 @@
   <%= form.text_field :description %>
   <%= form.number_field :price, min: 1, step: 1 %>
 
+  <input name="reward[category_ids][]" type="hidden" value>
+  <div class="field">
+    <%= form.label :category_ids, "Categories", class: 'label' %>
+    <div class="control">
+      <select id="reward_category_ids" name ="reward[category_ids][]" multiple data-type="tags" data-placeholder="Choose Categories" test_id='category_input'>
+        <%= @reward.categories.each do |category| %>
+          <option value="<%= category.id %>" selected><%= category.title %></option>
+        <% end %>
+        <%= @possible_categories.each do |possible_category| %>
+          <option value="<%= possible_category.id %>"><%= possible_category.title %></option>
+        <% end %>
+      </select>
+      <% if reward.errors.group_by_attribute.include?(:categories) %>
+        <div class='help is-danger'>
+          <% reward.errors.full_messages_for(:categories).each do |message| %>
+            <%= message %><br>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= form.submit "Save Reward", class: "button is-primary" %>
   </div>

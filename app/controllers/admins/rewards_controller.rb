@@ -1,7 +1,7 @@
 module Admins
   class RewardsController < BaseController
     def index
-      @rewards = Reward.all
+      @rewards = Reward.includes(:categories).all
     end
 
     def show
@@ -10,10 +10,12 @@ module Admins
 
     def new
       @reward = Reward.new
+      @possible_categories = Category.all
     end
 
     def edit
       @reward = find_reward
+      @possible_categories = Category.all - @reward.categories
     end
 
     def create
@@ -21,6 +23,7 @@ module Admins
       if @reward.save
         redirect_to admins_rewards_path, notice: 'Reward was successfully created.'
       else
+        @possible_categories = Category.all - @reward.categories
         render :new
       end
     end
@@ -30,6 +33,7 @@ module Admins
       if @reward.update(reward_params)
         redirect_to admins_reward_path(@reward), notice: 'Reward was successfully updated.'
       else
+        @possible_categories = Category.all - @reward.categories
         render :edit
       end
     end
@@ -43,11 +47,11 @@ module Admins
     private
 
     def find_reward
-      Reward.find(params[:id])
+      Reward.includes(:categories).find(params[:id])
     end
 
     def reward_params
-      params.require(:reward).permit(:title, :description, :price)
+      params.require(:reward).permit(:title, :description, :price, category_ids: [])
     end
   end
 end

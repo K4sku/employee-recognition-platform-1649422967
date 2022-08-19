@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :order do
-    reward
-    employee
+    association :employee
+    reward factory: :reward, price: 1
+    purchase_price { 1 }
     status { :placed }
     created_at { Time.zone.at(0) }
 
