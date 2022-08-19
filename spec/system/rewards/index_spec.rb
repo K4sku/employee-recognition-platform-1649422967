@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Rewards index display paginated rewards', type: :system do
+describe 'Rewards index display paginated rewards', type: :system, js: true do
   let!(:rewards) { create_list(:reward, 7) }
   let(:employee) { create(:employee) }
 
@@ -33,7 +33,11 @@ describe 'Rewards index display paginated rewards', type: :system do
   end
 
   context 'when on rewards 2nd page' do
-    before { click_link '2' }
+    before do
+      within(page.find('nav.pagination')) do
+        click_link '2'
+      end
+    end
 
     it 'shows rewards ids: 4, 5, 6' do
       expect(page).to have_selector(:css, "div[test_id^='reward_']", count: 3)
@@ -53,7 +57,11 @@ describe 'Rewards index display paginated rewards', type: :system do
   end
 
   context 'when on rewards 3nd (final) page' do
-    before { click_link '3' }
+    before do
+      within(page.find('nav.pagination')) do
+        click_link '3'
+      end
+    end
 
     it 'shows reward id: 7' do
       expect(page).to have_selector(:css, "div[test_id^='reward_']", count: 1)
