@@ -8,7 +8,7 @@ class RewardsController < EmployeeBaseController
                  Reward.all.includes(:categories)
                end
     @rewards = @rewards.page(params[:page])
-    @categories = Category.pluck(:title)
+    @category_titles = Category.pluck(:title)
   end
 
   def show

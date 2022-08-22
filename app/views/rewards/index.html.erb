@@ -6,7 +6,7 @@
     <div class="tabs is-centered">
       <ul>
         <% presenter = FilterLinksPresenter.new(self, filter_key: "category") %>
-        <% @categories.each do |category| %>
+        <% @category_titles.each do |category| %>
           <%= presenter.styled_link_to_filter_query(request, category) %>
         <% end %>
       </ul>
