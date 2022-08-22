@@ -1,13 +1,7 @@
 class RewardsController < EmployeeBaseController
   def index
-    @rewards = if reward_params.key?('category')
-                 Reward.includes(:categories)
-                       .where("categories.title = '#{reward_params[:category]}'")
-                       .references(:categories)
-               else
-                 Reward.all.includes(:categories)
-               end
-    @rewards = @rewards.page(params[:page])
+    @rewards = FilterPaginatedRewards.call(category: reward_params[:category],
+                                           page: reward_params[:page])
     @category_titles = Category.pluck(:title)
   end
 
