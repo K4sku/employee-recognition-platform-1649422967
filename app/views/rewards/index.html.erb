@@ -3,6 +3,14 @@
     <div class="level-left">
       <p class='is-size-3'><strong>Rewards</strong></p>
     </div>
+    <div class="tabs is-centered">
+      <ul>
+        <% presenter = FilterLinksPresenter.new(self, filter_key: "category") %>
+        <% @category_titles.each do |category| %>
+          <%= presenter.styled_link_to_filter_query(request, category) %>
+        <% end %>
+      </ul>
+    </div>
   </nav>
   <div class="columns">
     <% @rewards.each do |reward| %>
@@ -15,6 +23,11 @@
             <p class="subtitle">
               Price: <%= reward.price %>
             </p>
+            <div>
+              <% reward.categories.each do |category| %>
+                <span class='tag'> <%= category.title %></span>
+              <% end %>
+            </div>
           </div>
           <footer class="card-footer">
             <p class="card-footer-item">
@@ -27,7 +40,7 @@
       </div>
     <% end %>
   </div>
-<%= paginate @rewards %>
+  <%= paginate @rewards %>
 </div>
 <% content_for :head do %>
   <%= rel_next_prev_link_tags @rewards %>
