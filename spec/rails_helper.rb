@@ -42,7 +42,9 @@ RSpec.configure do |config|
     driven_by :rack_test
   end
 
+  # use chrome instead of geckodriver due to Firefox snap sandboxing in Ubuntu 22 LTS
+  # https://github.com/mozilla/geckodriver/releases/tag/v0.31.0
   config.before(:each, type: :system, js: true) do
-    driven_by :selenium_headless
+    driven_by :selenium_chrome_headless
   end
 end
