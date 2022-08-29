@@ -36,7 +36,7 @@ describe 'Kudo\'s show action', type: :system, js: true do
       accept_confirm do
         click_on 'Delete'
       end
-      expect(page).to have_current_path root_path
+      expect(page).to have_current_path kudo_path(owned_kudo)
       expect(page).to have_content 'You can not perform this action.'
     end
   end
