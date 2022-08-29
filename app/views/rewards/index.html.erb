@@ -16,11 +16,6 @@
     <% @rewards.each do |reward| %>
       <div class="column is-one-third">
         <div class="card constant-height-card" test_id="reward_<%=reward.id%>">
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <%=  reward.image.attached? ? image_tag(reward.image) : image_tag("https://bulma.io/images/placeholders/1280x960.png") %>
-            </figure>
-          </div>
           <div class="card-content constant-height-card">
             <p class="title">
               <%= reward.title %>
