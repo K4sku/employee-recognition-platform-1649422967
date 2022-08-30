@@ -36,5 +36,8 @@ module RubyEmployeeRecognition
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # use vips as default active storage variants
+    config.active_storage.variant_processor = :vips
   end
 end
