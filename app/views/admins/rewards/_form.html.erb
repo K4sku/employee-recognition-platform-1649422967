@@ -8,7 +8,7 @@
   <div class="field">
     <%= form.label :reward_image, "Image", class: 'label' %>
     <div class="control">
-      <%= form.file_field :image, accept: 'image/png,image/jpg', test_id: "image_input", direct_upload: true %>
+      <%= form.file_field :image, accept: 'image/png,image/jpg', test_id: "image_input" %>
       <% if reward.errors.group_by_attribute.include?(:image) %>
         <div class='help is-danger'>
           <% reward.errors.full_messages_for(:image).each do |message| %>
