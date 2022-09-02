@@ -14,7 +14,7 @@ class Reward < ApplicationRecord
 
   def image_format
     return unless image.attached?
-    return if %w[image/png image/jpg].include?(image.blob.content_type)
+    return if %w[image/png image/jpg image/jpeg].include?(image.blob.content_type)
 
     errors.add(:image, 'Only png and jpg images are accepted')
   end
