@@ -7,8 +7,11 @@
 
   <div class="field">
     <%= form.label :reward_image, "Image", class: 'label' %>
+    <div>
+      <%= image_tag @reward.image.variant(resize_to_limit: [200, nil]) if @reward.image.attached? %>
+    </div>
     <div class="control">
-      <%= form.file_field :image, accept: 'image/png,image/jpg', test_id: "image_input" %>
+      <%= form.file_field :image, accept: 'image/png,image/jpg,image/jpeg', test_id: "image_input" %>
       <% if reward.errors.group_by_attribute.include?(:image) %>
         <div class='help is-danger'>
           <% reward.errors.full_messages_for(:image).each do |message| %>
