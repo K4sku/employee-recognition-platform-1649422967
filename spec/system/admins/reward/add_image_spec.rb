@@ -29,7 +29,7 @@ describe 'Admin can add image to reward', type: :system, js: true do
       attach_file('reward[image]', Rails.root.join('spec/fixtures/files/invalid_reward_image.gif'))
       click_on 'Save Reward'
       reward.reload
-      expect(page).to have_content('Only png and jpg images are accepted')
+      expect(page).to have_content('Image has to be png or jpg')
       expect(reward.image).not_to be_attached
       expect(page).not_to have_xpath("//img[contains(@src, 'valid_reward_image.jpg')]")
     end
