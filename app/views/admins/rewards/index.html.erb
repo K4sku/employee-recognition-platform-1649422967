@@ -15,6 +15,9 @@
             <div class="list-item-title"><%= reward.title %></div>
             <div class="list-item-description">
               <p class="has-text-weight-semibold">Price: <%= reward.price %></p>
+              <div>
+                <%= image_tag reward.image.variant(resize_to_limit: [nil, 200]) if reward.image.attached? %>
+              </div>
               <p><%= reward.description %></p>
               <div>
                 <% reward.categories.each do |category| %>

@@ -7,6 +7,10 @@ describe 'Reward show action', type: :system do
 
   let(:employee) { create(:employee) }
   let(:reward) { create(:reward) }
+  let(:reward_with_image) do
+    create(:reward,
+           image: fixture_file_upload(Rails.root.join('spec/fixtures/files/valid_reward_image.jpg'), 'image/jpg'))
+  end
 
   context 'when employee is on reward show page' do
     it 'show reward title, description and price' do
@@ -20,6 +24,11 @@ describe 'Reward show action', type: :system do
       visit reward_path(reward)
       expect(page).to have_link('Back')
       expect(page).to have_link('CLAIM REWARD!')
+    end
+
+    it 'shows image when attached' do
+      visit reward_path(reward_with_image)
+      expect(page.find('.box')).to have_xpath('//img')
     end
   end
 end

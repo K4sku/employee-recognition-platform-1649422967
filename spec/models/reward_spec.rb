@@ -14,5 +14,15 @@ RSpec.describe Reward, type: :model do
         .is_greater_than_or_equal_to(1)
     end
     # rubocop:enable RSpec/ImplicitSubject
+
+    it 'validates image file type' do
+      reward = create(:reward)
+      reward.image = fixture_file_upload(Rails.root.join('spec/fixtures/files/valid_reward_image.jpg'), 'image/jpg')
+      expect(reward).to be_valid
+      reward.image = fixture_file_upload(Rails.root.join('spec/fixtures/files/valid_reward_image.png'), 'image/png')
+      expect(reward).to be_valid
+      reward.image = fixture_file_upload(Rails.root.join('spec/fixtures/files/invalid_reward_image.gif'), 'image/gif')
+      expect(reward).to be_invalid
+    end
   end
 end

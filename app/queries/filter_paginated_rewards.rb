@@ -10,6 +10,7 @@ class FilterPaginatedRewards
 
   def self.call(filters)
     Reward
+      .with_attached_image
       .includes(:categories)
       .extending(Scopes)
       .by_category(filters[:category])

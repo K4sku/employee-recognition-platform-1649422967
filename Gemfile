@@ -10,6 +10,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bulma_form_builder'
 gem 'bulma-rails', '~> 0.9.3'
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'google-cloud-storage', '~> 1.38'
+gem 'image_processing', '~> 1.12', '>= 1.12.2'
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 # Missing dependency on Mailer gem in Ruby 3.1.0
 gem 'net-imap', require: false

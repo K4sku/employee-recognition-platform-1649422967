@@ -1,7 +1,7 @@
 module Admins
   class RewardsController < BaseController
     def index
-      @rewards = Reward.includes(:categories).all
+      @rewards = Reward.with_attached_image.includes(:categories)
     end
 
     def show
@@ -51,7 +51,7 @@ module Admins
     end
 
     def reward_params
-      params.require(:reward).permit(:title, :description, :price, category_ids: [])
+      params.require(:reward).permit(:title, :description, :price, :image, category_ids: [])
     end
   end
 end
