@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin can deliver placed orders', type: :system do
+describe 'When admin is on index page', type: :system do
   before do
     sign_in admin
     create_list(:kudo, 2, reciever: employee)
@@ -12,16 +12,15 @@ describe 'Admin can deliver placed orders', type: :system do
   let(:reward) { create(:reward) }
   let(:order) { build(:order) }
 
-  context 'when admin goes to orders list' do
-    it 'show all orders' do
-      visit admins_orders_path
-      expect(page).to have_selector(:css, "div[test_id^='order_']", count: 2)
-      expect(page).to have_content(reward.title, count: 2)
-      expect(page).to have_content(reward.description, count: 2)
-      expect(page).to have_content("Price: #{reward.price}", count: 2)
-      expect(page).to have_content(order.created_at.strftime('%F'), count: 2)
-      expect(page).to have_link('Deliver', count: 2, exact: true)
-    end
+  it 'show all orders and Export to CSV button' do
+    visit admins_orders_path
+    expect(page).to have_selector(:css, "div[test_id^='order_']", count: 2)
+    expect(page).to have_content(reward.title, count: 2)
+    expect(page).to have_content(reward.description, count: 2)
+    expect(page).to have_content("Price: #{reward.price}", count: 2)
+    expect(page).to have_content(order.created_at.strftime('%F'), count: 2)
+    expect(page).to have_link('Deliver', count: 2, exact: true)
+    expect(page).to have_link('Export to CSV')
   end
 
   context 'when admin delivers order' do
