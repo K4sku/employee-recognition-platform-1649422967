@@ -10,6 +10,10 @@ module Admins
       redirect_back fallback_location: admins_orders_path
     end
 
+    def csv_export
+      send_data Order.to_csv, filename: "orders-#{Time.zone.today}.csv"
+    end
+
     private
 
     def order
