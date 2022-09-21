@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :rewards
     resources :orders, only: %i[index] do
         put 'deliver', on: :member
+        get 'csv_export', on: :collection, to: 'orders#csv_export'
     end
     resources :categories
     root to: 'pages#dashboard'
