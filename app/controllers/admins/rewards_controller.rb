@@ -53,7 +53,8 @@ module Admins
 
       service = ImportRewardsService.new(uploaded_file_path)
       if service.call
-        redirect_to admins_rewards_path, notice: 'Rewards were successfully uploaded.'
+        redirect_to admins_rewards_path,
+                    notice: "#{service.record_count} #{'reward'.pluralize(service.record_count)} imported"
       else
         render :upload_rewards, locals: { errors: service.errors }
       end
