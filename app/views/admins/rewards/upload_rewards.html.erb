@@ -1,28 +1,42 @@
 <div class='section'>
   <p class='is-size-3'><strong>Import Rewards from CSV</strong></p>
 
+  <div class="block">
+    <b>Data formatting:</b><br>
+    Accepted headers: title, description, price, category. All other columns will be ignored.<br>
+    Leading and trailing spaces will be removed.<br>
+    File without headers must have data in order: title, description, price, category.<br>
+    Columns separator is comma ','.<br>
+    Fields that contain a special character (comma, newline, or double quote), must be enclosed in double quotes.<br>
+    <b>If file has headers mark box below.</b>
+
+  </div>
+
   <% if local_variables.include?(:errors) %>
-    <div class='help is-danger'>
-      <% errors.each do |message| %>
-        <%= message %><br>
-      <% end %>
+    <div class="block">
+      <div class='help is-danger'>
+        <% errors.each do |message| %>
+          <%= message %><br>
+        <% end %>
+      </div>
     </div>
   <% end %>
+  <div class="block">
+    <%= form_with(url: { action: :import_from_csv }, multipart: true) do %>
+      <div class="field">
+        <%= file_field_tag 'rewards_csv', accept: 'text/csv', test_id: "rewards_csv_input" %>
+      </div>
+      <div>
+        <%= check_box_tag 'headers' %>
+        <%= label_tag 'headers', 'File with headers' %>
+      </div>
+      <div class="actions mt-3">
+        <%= submit_tag "Import selected file", class: "button is-primary" %>
+      </div>
+    <% end %>
 
-  <%= form_with(url: {action: :import_from_csv}, multipart: true) do %>
-    <div class="field">
-    <%= file_field_tag 'rewards_csv', accept: 'text/csv', test_id: "rewards_csv_input" %>
+    <div class='mt-3'>
+      <%= link_to 'Back', admins_rewards_path, class: 'button' %>
     </div>
-    <div>
-      <%= check_box_tag 'headers' %>
-      <%= label_tag 'headers', 'File with headers' %>
-    </div>
-    <div class="actions">
-      <%= submit_tag "Import selected file", class: "button is-primary" %>
-    </div>
-  <% end %>
-
-  <div class='mt-3'>
-    <%= link_to 'Back', admins_rewards_path, class: 'button' %>
   </div>
 </div>
