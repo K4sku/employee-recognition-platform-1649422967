@@ -3,7 +3,7 @@
 
   <% if local_variables.include?(:errors) %>
     <div class='help is-danger'>
-      <% errors.full_messages_for(:image).each do |message| %>
+      <% errors.each do |message| %>
         <%= message %><br>
       <% end %>
     </div>
@@ -12,6 +12,10 @@
   <%= form_with(url: {action: :import_from_csv}, multipart: true) do %>
     <div class="field">
     <%= file_field_tag 'rewards_csv', accept: 'text/csv', test_id: "rewards_csv_input" %>
+    </div>
+    <div>
+      <%= check_box_tag 'headers' %>
+      <%= label_tag 'headers', 'File with headers' %>
     </div>
     <div class="actions">
       <%= submit_tag "Import selected file", class: "button is-primary" %>

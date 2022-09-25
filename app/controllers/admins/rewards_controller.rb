@@ -51,7 +51,7 @@ module Admins
       uploaded_file_path = Rails.root.join('public', 'uploads', uploaded_file.original_filename)
       File.binwrite(uploaded_file_path, uploaded_file.read)
 
-      service = ImportRewardsService.new(uploaded_file_path)
+      service = ImportRewardsService.new(uploaded_file_path, params[:headers])
       if service.call
         redirect_to admins_rewards_path,
                     notice: "#{service.record_count} #{'reward'.pluralize(service.record_count)} imported"
