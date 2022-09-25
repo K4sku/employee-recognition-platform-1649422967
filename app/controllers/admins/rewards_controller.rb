@@ -58,7 +58,6 @@ module Admins
       else
         render :upload_rewards, locals: { errors: service.errors }
       end
-      redirect_to admins_rewards_path, alert: 'Something went wrong. Try again later.'
     end
 
     private
