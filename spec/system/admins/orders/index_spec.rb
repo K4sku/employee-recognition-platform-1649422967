@@ -15,7 +15,7 @@ describe 'When admin is on index page', type: :system do
   it 'show all orders and Export to CSV button' do
     visit admins_orders_path
     expect(page).to have_selector(:css, "div[test_id^='order_']", count: 2)
-    expect(page).to have_content(reward.title, count: 2)
+    expect(page).to have_content('Reward_', count: 2)
     expect(page).to have_content(reward.description, count: 2)
     expect(page).to have_content("Price: #{reward.price}", count: 2)
     expect(page).to have_content(order.created_at.strftime('%F'), count: 2)
