@@ -79,7 +79,7 @@ class ImportRewardsService
   def transaction_with_error_handling(&block)
     ActiveRecord::Base.transaction(requires_new: true, &block)
   rescue ActiveRecord::ActiveRecordError => e
-    message = "#{'Error'.pluralize(e.record.errors.size)} for '#{e.record.title}': "\
+    message = "#{'Error'.pluralize(e.record.errors.size)} for '#{e.record.title}': " \
               "#{e.record.errors.full_messages.join('; ')}"
     failure(message)
   end
