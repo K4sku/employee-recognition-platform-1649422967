@@ -3,9 +3,9 @@ class Reward < ApplicationRecord
   has_many :categories, through: :category_rewards
   has_one_attached :image
 
-  validates :title, :description, :price, presence: true
+  validates :title, :description, :price, :categories, presence: true
+  validates :title, uniqueness: true
   validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
-  validates :categories, presence: true
   validate :image_format
 
   paginates_per 3

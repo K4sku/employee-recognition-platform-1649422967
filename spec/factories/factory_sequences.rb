@@ -11,4 +11,7 @@ FactoryBot.define do
   sequence :category_title do |n|
     "Category#{n}"
   end
+  sequence :reward_title do |n|
+    "Reward_#{n}"
+  end
 end

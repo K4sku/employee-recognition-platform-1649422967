@@ -44,6 +44,22 @@ module Admins
       redirect_to admins_rewards_path, notice: 'Reward was successfully destroyed.'
     end
 
+    def upload_rewards; end
+
+    def import_from_csv
+      uploaded_file = params[:rewards_csv]
+      uploaded_file_path = Rails.root.join('public', 'uploads', uploaded_file.original_filename)
+      File.binwrite(uploaded_file_path, uploaded_file.read)
+
+      service = ImportRewardsService.new(uploaded_file_path, params[:headers])
+      if service.call
+        redirect_to admins_rewards_path,
+                    notice: "#{service.record_count} #{'reward'.pluralize(service.record_count)} imported"
+      else
+        render :upload_rewards, locals: { errors: service.errors }
+      end
+    end
+
     private
 
     def find_reward

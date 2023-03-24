@@ -19,7 +19,7 @@ describe 'Employee can list bought rewards', type: :system, js: true do
     it 'show all employees orders and highlights all' do
       visit orders_path
       expect(page).to have_selector(:css, "div[test_id^='order_']", count: 3)
-      expect(page).to have_content(reward.title, count: 3)
+      expect(page).to have_content('Reward_', count: 3)
       expect(page).to have_content(reward.description, count: 3)
       expect(page).to have_content("Price: #{reward.price}", count: 3)
       expect(page).to have_content(order.created_at.strftime('%F'), count: 3)

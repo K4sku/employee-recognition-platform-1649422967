@@ -21,7 +21,10 @@ Rails.application.routes.draw do
       patch 'add_kudos', on: :collection
     end
     resources :company_values
-    resources :rewards
+    resources :rewards do
+      get 'upload_rewards', on: :collection
+      post 'import_from_csv', on: :collection
+    end
     resources :orders, only: %i[index] do
         put 'deliver', on: :member
         get 'csv_export', on: :collection, to: 'orders#csv_export'

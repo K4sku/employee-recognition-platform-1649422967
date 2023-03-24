@@ -4,7 +4,7 @@ FactoryBot.define do
       categories_count { 2 }
     end
 
-    title { 'Reward title' }
+    title { generate(:reward_title) }
     description { 'Reward description' }
     price { 1 }
 
